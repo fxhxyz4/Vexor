@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #161616;
+  --border-c: rgba(255, 255, 255, 0.08);
+  --text-primary: #f0f0f0;
+  --text-secondary: #aaaaaa;
+  --text-muted: #666666;
+  --card-bg: #111111;
+  --blue: #0c447c;
+  --blue-mid: #185fa5;
+  --blue-light: #378add;
+  --accent: #4a9eff;
+  --selection-bg: rgba(74, 158, 255, 0.35);
+  --selection-color: #ffffff;
+  --scrollbar-thumb: #2a2a2a;
+  --scrollbar-track: #0a0a0a;
+  --grid-line: rgba(255, 255, 255, 0.03);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    'Geist',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.25;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ── Selection ────────────────────────────────── */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+::-moz-selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+/* ── No user-select on UI elements ───────────── */
+button,
+a,
+label,
+svg,
+img,
+.no-select,
+.section-tag,
+[data-no-select] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ── Section helpers ──────────────────────────── */
+.section-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 96px 48px;
+  border-top: 1px solid var(--border-c);
+}
+
+.section-tag {
+  display: block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.75;
+  margin-bottom: 52px;
+}
+
+/* ── Responsive breakpoints ───────────────────── */
+@media (max-width: 1024px) {
+  .section-wrap {
+    padding: 72px 32px;
+  }
+}
+@media (max-width: 768px) {
+  .section-wrap {
+    padding: 56px 20px;
+  }
+  .section-title {
+    letter-spacing: -1px;
+  }
+}
+@media (max-width: 480px) {
+  .section-wrap {
+    padding: 48px 12px;
+  }
+}
+@media (max-width: 280px) {
+  .section-wrap {
+    padding: 36px 8px;
+  }
+  .section-title {
+    font-size: 22px !important;
+    letter-spacing: -0.5px !important;
+  }
+}
