@@ -22,3 +22,4 @@ test-results/
 *.pem
 npm-debug.log*
 text.txt
+package-lock.*
