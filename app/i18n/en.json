@@ -37,7 +37,8 @@
       "Mobile App": "Mobile App",
       "SaaS Platform": "SaaS Platform",
       "Web App": "Web App",
-      "Design": "Design"
+      "Design": "Design",
+      "Automation & AI": "Automation & AI"
     },
     "all_title": "All projects",
     "all_sub": "{n} projects — from landing pages to SaaS platforms",
@@ -47,7 +48,37 @@
     "stack": "Stack",
     "discuss": "Discuss a similar project →",
     "github": "GitHub",
-    "back": "All projects"
+    "back": "All projects",
+    "demo": "Demo",
+    "projects_list": [
+      {
+        "slug": "strym",
+        "type": "Web App",
+        "name": "Strym",
+        "desc": "E-commerce application for selling electronics with catalog and filtering.",
+        "stack": ["Next.js", "FastAPI", "PostgreSQL"],
+        "gradient": "linear-gradient(135deg,#0a1628 0%,#185FA5 100%)",
+        "github": "https://github.com/vexorteam/Strym"
+      },
+      {
+        "slug": "roksi-shop",
+        "type": "Design",
+        "name": "Roksi Shop",
+        "desc": "UI/UX design of an online store for women's clothing.",
+        "stack": ["Figma", "UI/UX", "E-commerce"],
+        "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
+        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop"
+      },
+      {
+        "slug": "krepa",
+        "type": "Landing Page",
+        "name": "Krepa",
+        "desc": "Promo landing page for a fitness app with animations and CTA for download.",
+        "stack": ["Next.js", "Framer Motion", "Tailwind"],
+        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
+        "github": "https://github.com/vexorteam/Krepa"
+      }
+    ]
   },
   "about": {
     "tag": "// team",
@@ -81,6 +112,56 @@
         "n": "04",
         "label": "Launch",
         "desc": "Deploy, configure, hand off the project"
+      }
+    ],
+    "team_list": [
+      {
+        "id": "oleg",
+        "initials": "OV",
+        "name": "Oleh V.",
+        "role": "Fullstack Developer",
+        "desc": "5 years of experience. Specializes in Next.js, Node.js, and UI/UX design. Built platforms for fintech and e-commerce.",
+        "skills": ["Next.js", "Node.js", "UI/UX"]
+      },
+      {
+        "id": "viktor",
+        "initials": "VL",
+        "name": "Victor L.",
+        "role": "Backend Developer",
+        "desc": "4 years of experience. Worked with 30+ projects from idea to finished product. Python (FastAPI), Java (SpringBoot), AI integration.",
+        "skills": ["FastAPI", "SpringBoot", "Ollama"]
+      },
+      {
+        "id": "rostyslav",
+        "initials": "RM",
+        "name": "Rostyslav M.",
+        "role": "Backend Developer",
+        "desc": "API and database architect. Experience with highload systems and microservices.",
+        "skills": [".NET", "ASP.NET", "PostgreSQL"]
+      },
+      {
+        "id": "danila",
+        "initials": "DM",
+        "name": "Danylo M.",
+        "role": "Fullstack Developer",
+        "desc": "React and TypeScript since 2023. Writes clean, accessible code. Performance is his passion.",
+        "skills": ["React", "TypeScript", "SpringBoot"]
+      },
+      {
+        "id": "kirilo",
+        "initials": "KS",
+        "name": "Kyrylo S.",
+        "role": "Mobile Developer",
+        "desc": "React Native and Flutter from scratch to App Store. Published 6+ apps for iOS and Android.",
+        "skills": ["React Native", "Flutter", "Java"]
+      },
+      {
+        "id": "danylo",
+        "initials": "DH",
+        "name": "Danylo H.",
+        "role": "Project Manager",
+        "desc": "Holds all the strings. Guarantees the project delivers on time and the client is always in the loop.",
+        "skills": ["Agile", "Scrum", "Jira"]
       }
     ]
   },
@@ -147,7 +228,9 @@
       "desc_placeholder": "Briefly describe what needs to be done...",
       "submit": "Send request",
       "submitted": "Sent!",
-      "tg_btn": "Message us on Telegram"
+      "tg_btn": "Message us on Telegram",
+      "invalid_input": "Invalid input",
+      "fill_required": "Please fill in name and contact"
     },
     "budget_uah": [
       "до 8 000 ₴",
@@ -164,7 +247,10 @@
       "$2,000 – $5,000",
       "$5,000+",
       "Not sure yet"
-    ]
+    ],
+    "missing_fields": "Please fill in the required fields: Name and Contact.",
+    "invalid_script": "Invalid input in the form.",
+    "button_error": "Invalid input"
   },
   "footer": {
     "rights": "All rights reserved.",
