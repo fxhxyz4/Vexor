@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useApp } from '../lib/context';
+import { socialLinks } from '../data/site';
 
 const EXT = { target: '_blank' as const, rel: 'noopener noreferrer nofollow' };
 
@@ -27,25 +28,15 @@ export function Contact() {
   };
 
   const info = [
-    {
-      icon: '📬',
-      label: c.email_label,
-      value: 'hello@vexor.team',
-      href: 'mailto:hello@vexor.team',
-    },
+    { icon: '📬', label: c.email_label, value: socialLinks.emailDisplay, href: socialLinks.email },
     {
       icon: '✈️',
       label: c.telegram_label,
-      value: '@vexor_studio',
-      href: 'https://t.me/vexor_studio',
+      value: socialLinks.telegramDisplay,
+      href: socialLinks.telegram,
     },
     { icon: '🕐', label: c.response_label, value: c.response_value, href: null },
-    {
-      icon: '📍',
-      label: c.location_label,
-      value: c.location_value,
-      href: 'https://maps.google.com/?q=Kyiv,Ukraine',
-    },
+    { icon: '📍', label: c.location_label, value: c.location_value, href: socialLinks.location },
   ];
 
   return (
@@ -294,7 +285,7 @@ export function Contact() {
 
           {/* TG button — bigger icon, visible */}
           <a
-            href="https://t.me/vexor_studio"
+            href={socialLinks.telegram}
             {...EXT}
             style={{
               width: '100%',
@@ -321,8 +312,8 @@ export function Contact() {
             }}
           >
             <svg
-              width="23"
-              height="23"
+              width="22"
+              height="22"
               viewBox="0 0 24 24"
               fill="currentColor"
               style={{ flexShrink: 0 }}

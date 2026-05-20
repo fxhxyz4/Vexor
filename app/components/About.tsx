@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useApp } from '../lib/context';
-import { team } from '../data/site';
+import { team, socialLinks } from '../data/site';
 
 const EXT = { target: '_blank' as const, rel: 'noopener noreferrer nofollow' };
 
@@ -63,7 +63,7 @@ export function About() {
 
           {/* GitHub */}
           <a
-            href="https://github.com/vexorteam"
+            href={socialLinks.github}
             {...EXT}
             style={{
               display: 'flex',
@@ -118,7 +118,7 @@ export function About() {
 
           {/* Telegram */}
           <a
-            href="https://t.me/vexor_studio"
+            href={socialLinks.telegram}
             {...EXT}
             style={{
               display: 'flex',
@@ -158,7 +158,9 @@ export function About() {
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 500, color: '#26a9e0' }}>@vexor_studio</div>
+              <div style={{ fontSize: 14, fontWeight: 500, color: '#26a9e0' }}>
+                {socialLinks.telegramDisplay}
+              </div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
                 {a.telegram_sub}
               </div>
