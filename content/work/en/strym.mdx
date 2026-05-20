@@ -1,0 +1,39 @@
+---
+title: Strym
+type: Web App
+description: E-commerce application for selling electronics with catalog, filtering and order management.
+gradient: linear-gradient(135deg,#0a1628 0%,#185FA5 100%)
+stack: [Next.js, FastAPI, PostgreSQL]
+year: 2025
+client: Strym
+link: https://github.com/vexorteam/Strym
+---
+
+## About the project
+
+Strym is an electronics online store. The client needed a modern e-commerce app with a convenient catalog, fast search and smooth checkout flow.
+
+## Challenge
+
+- Product catalog with categories and filtering
+- Product pages with photos, descriptions and specs
+- Shopping cart and order placement
+- Admin panel for managing products and orders
+- REST API on FastAPI with PostgreSQL
+
+## Solution
+
+We built a full e-commerce on Next.js with server-side rendering for SEO. Backend on FastAPI — fast, typed Python API. PostgreSQL with optimized queries for the catalog.
+
+Key decisions:
+
+- **SSR + ISR** — product pages rendered server-side, indexed by Google
+- **FastAPI** — automatic OpenAPI docs, validation via Pydantic
+- **Filtering** — multi-parameter filtering without page reload
+- **Image optimization** — Next.js Image with automatic WebP conversion
+
+## Results
+
+- Catalog load time: **< 1s**
+- Fully responsive design for mobile
+- Ready to scale to thousands of products
