@@ -12,6 +12,7 @@ const CATEGORY_KEYS = [
   'SaaS Platform',
   'Web App',
   'Design',
+  'Automation & AI',
 ] as const;
 
 export function WorkPageClient({
@@ -24,7 +25,7 @@ export function WorkPageClient({
   const [active, setActive] = useState('all');
   const { tr, lang } = useApp();
   const w = tr.work;
-  const cats = w.categories;
+  const cats = w.categories as Record<string, string>;
 
   const projects = lang === 'en' ? projectsEn : projectsUk;
   const filtered = active === 'all' ? projects : projects.filter(p => p.type === active);
@@ -102,6 +103,7 @@ export function WorkPageClient({
 
         {/* Filters */}
         <motion.div
+          className="work-filters"
           style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 48 }}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -142,7 +144,7 @@ export function WorkPageClient({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))',
             gap: 16,
           }}
         >
@@ -276,6 +278,20 @@ export function WorkPageClient({
           ))}
         </div>
 
+        <style>{`
+          .work-filters button {
+            white-space: nowrap;
+          }
+          @media (max-width: 320px) {
+            .work-filters {
+              flex-wrap: nowrap;
+              overflow-x: auto;
+              padding-bottom: 8px;
+              -webkit-overflow-scrolling: touch;
+            }
+            .work-filters::-webkit-scrollbar { display: none; }
+          }
+        `}</style>
         {filtered.length === 0 && (
           <div
             style={{
