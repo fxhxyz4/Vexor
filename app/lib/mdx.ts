@@ -13,11 +13,18 @@ export interface WorkMeta {
   stack: string[];
   year: number;
   client: string;
-  link: string;
+  // code projects
+  demo?: string;
+  github?: string;
+  // design projects
+  dribbble?: string;
+  figma?: string;
 }
 
 export interface WorkPost extends WorkMeta {
   content: string;
+  // legacy - keep for backwards compat
+  link?: string;
 }
 
 function getLangDir(lang: string): string {
@@ -36,7 +43,6 @@ export function getAllWork(lang = 'uk'): WorkMeta[] {
   return getAllWorkSlugs().map(slug => {
     const dir = getLangDir(lang);
     const filePath = path.join(dir, `${slug}.mdx`);
-    // fallback to uk if en doesn't exist
     const file = fs.existsSync(filePath)
       ? fs.readFileSync(filePath, 'utf8')
       : fs.readFileSync(path.join(WORK_DIR, 'uk', `${slug}.mdx`), 'utf8');
@@ -49,7 +55,6 @@ export function getWorkBySlug(slug: string, lang = 'uk'): WorkPost | null {
   try {
     const dir = getLangDir(lang);
     const filePath = path.join(dir, `${slug}.mdx`);
-    // fallback to uk if en doesn't exist
     const file = fs.existsSync(filePath)
       ? fs.readFileSync(filePath, 'utf8')
       : fs.readFileSync(path.join(WORK_DIR, 'uk', `${slug}.mdx`), 'utf8');
