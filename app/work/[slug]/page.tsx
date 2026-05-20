@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getWorkBySlug, getAllWorkSlugs } from '../../lib/mdx';
-import { BackLink, MetaRow, CTARow, CaseContent } from './CaseClient';
+import { BackLink, CTARow, CaseContent } from './CaseClient';
 
 export async function generateStaticParams() {
   return getAllWorkSlugs().map(slug => ({ slug }));
@@ -80,7 +80,7 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
       >
         <BackLink href="/work" />
         <CaseContent postUk={postUk} postEn={postEn ?? postUk} mdxUk={mdxUk} mdxEn={mdxEn} />
-        <CTARow caseLink={postUk.link} />
+        <CTARow post={postUk} postEn={postEn ?? postUk} />
       </article>
     </main>
   );
