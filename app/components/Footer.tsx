@@ -52,12 +52,20 @@ export function Footer() {
             {f.telegram}
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
             {f.contact}
+          </a>
+          <a
+            href="/privacy"
+            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+          >
+            {f.privacy}
           </a>
           <a
             href="/sitemap.xml"
