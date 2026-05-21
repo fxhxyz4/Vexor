@@ -94,25 +94,45 @@ export function CaseContent({
         </p>
         <div
           style={{
-            height: 'clamp(180px,25vw,300px)',
             borderRadius: 14,
-            background: post.gradient,
             marginBottom: 32,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
             border: '1px solid var(--border-c)',
+            overflow: 'hidden',
+            background: post.gradient,
           }}
         >
-          <div
-            style={{
-              width: 100,
-              height: 70,
-              borderRadius: 10,
-              background: 'rgba(255,255,255,0.1)',
-              border: '1px solid rgba(255,255,255,0.2)',
-            }}
-          />
+          {post.image ? (
+            <img
+              src={post.image}
+              alt={post.title}
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                maxHeight: '600px',
+                objectFit: 'contain',
+              }}
+            />
+          ) : (
+            <div
+              style={{
+                height: 'clamp(180px,25vw,300px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: 100,
+                  height: 70,
+                  borderRadius: 10,
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                }}
+              />
+            </div>
+          )}
         </div>
         <MetaRow client={post.client} year={post.year} stack={post.stack} />
       </div>

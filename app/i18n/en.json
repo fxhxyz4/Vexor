@@ -52,13 +52,24 @@
     "demo": "Demo",
     "projects_list": [
       {
+        "slug": "krepa",
+        "type": "Landing Page",
+        "name": "Krepa",
+        "desc": "Promo landing page for a fitness app with animations and CTA for download.",
+        "stack": ["Next.js", "Framer Motion", "Tailwind"],
+        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
+        "github": "https://github.com/vexorteam/Krepa",
+        "image": "/assets/projects/krepa.png"
+      },
+      {
         "slug": "strym",
         "type": "Web App",
         "name": "Strym",
         "desc": "E-commerce application for selling electronics with catalog and filtering.",
         "stack": ["Next.js", "FastAPI", "PostgreSQL"],
         "gradient": "linear-gradient(135deg,#0a1628 0%,#185FA5 100%)",
-        "github": "https://github.com/vexorteam/Strym"
+        "github": "https://github.com/vexorteam/Strym",
+        "image": "/assets/projects/strym.png"
       },
       {
         "slug": "roksi-shop",
@@ -67,16 +78,8 @@
         "desc": "UI/UX design of an online store for women's clothing.",
         "stack": ["Figma", "UI/UX", "E-commerce"],
         "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
-        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop"
-      },
-      {
-        "slug": "krepa",
-        "type": "Landing Page",
-        "name": "Krepa",
-        "desc": "Promo landing page for a fitness app with animations and CTA for download.",
-        "stack": ["Next.js", "Framer Motion", "Tailwind"],
-        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
-        "github": "https://github.com/vexorteam/Krepa"
+        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop",
+        "image": "/assets/projects/roksi.png"
       }
     ]
   },
