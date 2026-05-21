@@ -83,7 +83,7 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Link href="/#hero" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <DiamondMark size={20} />
             <span
               className="no-select"
