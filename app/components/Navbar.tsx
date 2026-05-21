@@ -18,25 +18,18 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    // Lock body scroll when menu open
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [menuOpen]);
 
-  const handleLogoClick = (e: React.MouseEvent) => {
-    if (window.location.pathname === '/') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    setMenuOpen(false);
-  };
-
   const links = [
-    { href: '#services', label: n.services },
-    { href: '#work', label: n.work },
-    { href: '#about', label: n.team },
-    { href: '#faq', label: n.faq },
+    { href: '/#services', label: n.services },
+    { href: '/#work', label: n.work },
+    { href: '/#about', label: n.team },
+    { href: '/#faq', label: n.faq },
   ];
 
   const navBg = scrolled
@@ -90,11 +83,7 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link
-            href="/"
-            onClick={handleLogoClick}
-            style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-          >
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <DiamondMark size={20} />
             <span
               className="no-select"
@@ -185,7 +174,7 @@ export function Navbar() {
 
             {/* CTA — desktop */}
             <a
-              href="#contact"
+              href="/#contact"
               className="nav-cta-desktop"
               style={{
                 marginLeft: 8,
@@ -325,7 +314,7 @@ export function Navbar() {
 
           {/* CTA */}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setMenuOpen(false)}
             style={{
               display: 'flex',
