@@ -18,12 +18,19 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    // Lock body scroll when menu open
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [menuOpen]);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMenuOpen(false);
+  };
 
   const links = [
     { href: '#services', label: n.services },
@@ -83,7 +90,11 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link href="/#hero" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+          >
             <DiamondMark size={20} />
             <span
               className="no-select"
@@ -186,8 +197,6 @@ export function Navbar() {
                 color: isDark ? '#0a0a0a' : 'white',
                 transition: 'opacity 0.2s',
                 whiteSpace: 'nowrap',
-                width: '160px',
-                textAlign: 'center',
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.82')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
