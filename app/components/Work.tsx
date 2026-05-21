@@ -53,21 +53,42 @@ export function Work() {
                   style={{
                     height: 180,
                     background: p.gradient,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
                     position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
-                  <div
-                    style={{
-                      width: 80,
-                      height: 52,
-                      borderRadius: 8,
-                      background: 'rgba(255,255,255,0.1)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                    }}
-                  />
+                  {(p as { image?: string }).image ? (
+                    <img
+                      src={(p as { image?: string }).image}
+                      alt={p.name}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 80,
+                          height: 52,
+                          borderRadius: 8,
+                          background: 'rgba(255,255,255,0.1)',
+                          border: '1px solid rgba(255,255,255,0.2)',
+                        }}
+                      />
+                    </div>
+                  )}
                   <span
                     className="no-select"
                     style={{
@@ -76,6 +97,7 @@ export function Work() {
                       right: 14,
                       fontSize: 16,
                       color: 'rgba(255,255,255,0.6)',
+                      zIndex: 1,
                     }}
                   >
                     ↗

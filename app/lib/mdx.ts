@@ -10,6 +10,7 @@ export interface WorkMeta {
   type: string;
   description: string;
   gradient: string;
+  image?: string;
   stack: string[];
   year: number;
   client: string;

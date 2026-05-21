@@ -178,21 +178,42 @@ export function WorkPageClient({
                     style={{
                       height: 160,
                       background: p.gradient,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
                       position: 'relative',
+                      overflow: 'hidden',
                     }}
                   >
-                    <div
-                      style={{
-                        width: 64,
-                        height: 44,
-                        borderRadius: 6,
-                        background: 'rgba(255,255,255,0.1)',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                      }}
-                    />
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          display: 'block',
+                        }}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 64,
+                            height: 44,
+                            borderRadius: 6,
+                            background: 'rgba(255,255,255,0.1)',
+                            border: '1px solid rgba(255,255,255,0.2)',
+                          }}
+                        />
+                      </div>
+                    )}
                     <span
                       style={{
                         position: 'absolute',
@@ -200,6 +221,7 @@ export function WorkPageClient({
                         right: 14,
                         fontSize: 14,
                         color: 'rgba(255,255,255,0.5)',
+                        zIndex: 1,
                       }}
                     >
                       ↗
@@ -213,6 +235,7 @@ export function WorkPageClient({
                         fontFamily: 'Geist Mono, monospace',
                         color: 'rgba(255,255,255,0.4)',
                         letterSpacing: '0.06em',
+                        zIndex: 1,
                       }}
                     >
                       {p.year}
