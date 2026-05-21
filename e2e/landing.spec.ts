@@ -28,7 +28,7 @@ test.describe('Vexor landing page', () => {
 
   test('navbar links should scroll to sections', async ({ page }) => {
     await openMobileMenuIfNeeded(page);
-    const servicesLink = page.locator('a[href="#services"]:visible').first();
+    const servicesLink = page.locator('a[href="/#services"]:visible').first();
     await expect(servicesLink).toBeVisible();
     await servicesLink.click();
     await expect(page.locator('#services')).toBeInViewport();
@@ -36,8 +36,7 @@ test.describe('Vexor landing page', () => {
 
   test('navbar CTA should scroll to contact', async ({ page }) => {
     await openMobileMenuIfNeeded(page);
-    // Click any visible #contact link (desktop CTA or mobile menu CTA)
-    const ctaLink = page.locator('a[href="#contact"]:visible').first();
+    const ctaLink = page.locator('a[href="/#contact"]:visible').first();
     await ctaLink.click();
     await expect(page.locator('#contact')).toBeInViewport();
   });
@@ -49,7 +48,6 @@ test.describe('Vexor landing page', () => {
     if (isMobile) {
       await burger.click();
       await page.waitForTimeout(200);
-      // Theme button inside mobile menu
       await page.locator('[style*="position: fixed"] button').first().click();
     } else {
       await page.locator('.nav-controls-desktop button').first().click();
@@ -114,7 +112,6 @@ test.describe('Vexor landing page', () => {
 
   test('contact form submit button should show success', async ({ page }) => {
     await page.locator('#contact').scrollIntoViewIfNeeded();
-    // Fill required fields first (form now validates name + contact)
     const nameInput = page.locator('#contact input').first();
     const contactInput = page.locator('#contact input').nth(1);
     await nameInput.fill('Test User');
