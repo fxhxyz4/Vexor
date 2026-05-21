@@ -26,6 +26,8 @@ export function Contact() {
   const { tr, theme, lang } = useApp();
 
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currency, setCurrency] = useState<'uah' | 'usd'>('uah');
 
@@ -81,9 +83,7 @@ export function Contact() {
   ) => {
     const value = e.target.value;
     const invalid = containsScriptTag(value);
-
     e.target.style.borderColor = invalid ? '#ef4444' : 'var(--border-c)';
-
     checkHasError({ [fieldKey]: value });
   };
 
@@ -134,29 +134,42 @@ export function Contact() {
     return true;
   };
 
-  const handleSubmit = () => {
-    if (hasError) return;
+  const handleSubmit = async () => {
+    if (hasError || loading) return;
     if (!validateRequired()) return;
 
-    // Debug log
-    // const payload = {
-    //   name: nameValue,
-    //   contact: contactValue,
-    //   type: typeValue,
-    //   budget: budgetValue,
-    //   desc: descValue,
-    // };
+    setLoading(true);
+    setServerError(false);
 
-    // console.log('Contact form payload:', payload);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameValue,
+          contact: contactValue,
+          projectType: typeValue,
+          budget: budgetValue,
+          desc: descValue,
+        }),
+      });
 
-    setSent(true);
-    setNameValue('');
-    setContactValue('');
-    setTypeValue('');
-    setBudgetValue('');
-    setDescValue('');
+      if (!res.ok) throw new Error('Server error');
 
-    sentTimerRef.current = setTimeout(() => setSent(false), 3000);
+      setSent(true);
+      setNameValue('');
+      setContactValue('');
+      setTypeValue('');
+      setBudgetValue('');
+      setDescValue('');
+      sentTimerRef.current = setTimeout(() => setSent(false), 3000);
+    } catch {
+      // server error
+      setServerError(true);
+      setTimeout(() => setServerError(false), 4000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const info = [
@@ -172,12 +185,7 @@ export function Contact() {
       value: socialLinks.telegramDisplay,
       href: socialLinks.telegram,
     },
-    {
-      icon: '🕐',
-      label: c.response_label,
-      value: c.response_value,
-      href: null,
-    },
+    { icon: '🕐', label: c.response_label, value: c.response_value, href: null },
     {
       icon: '📍',
       label: c.location_label,
@@ -235,18 +243,10 @@ export function Contact() {
               >
                 {item.icon}
               </div>
-
               <div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: 'var(--text-muted)',
-                    marginBottom: 3,
-                  }}
-                >
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 3 }}>
                   {item.label}
                 </div>
-
                 {item.href ? (
                   <a
                     href={item.href}
@@ -286,18 +286,11 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 14,
-            }}
-          >
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               <label className="no-select" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                 {f.name_label} *
               </label>
-
               <input
                 type="text"
                 placeholder={f.name_placeholder}
@@ -320,12 +313,10 @@ export function Contact() {
                 }}
               />
             </div>
-
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               <label className="no-select" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                 {f.contact_label} *
               </label>
-
               <input
                 type="text"
                 placeholder={f.contact_placeholder}
@@ -350,7 +341,6 @@ export function Contact() {
             <label className="no-select" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
               {f.type_label}
             </label>
-
             <select
               style={{ ...inp, cursor: 'pointer' }}
               value={typeValue}
@@ -361,7 +351,6 @@ export function Contact() {
               <option value="" disabled>
                 {f.type_placeholder}
               </option>
-
               {f.types.map(o => (
                 <option key={o} value={o}>
                   {o}
@@ -371,17 +360,10 @@ export function Contact() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <label className="no-select" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                 {f.budget_label}
               </label>
-
               <div
                 style={{
                   display: 'flex',
@@ -418,7 +400,6 @@ export function Contact() {
                 ))}
               </div>
             </div>
-
             <select
               style={{ ...inp, cursor: 'pointer' }}
               value={budgetValue}
@@ -429,7 +410,6 @@ export function Contact() {
               <option value="" disabled>
                 {f.budget_placeholder}
               </option>
-
               {(currency === 'uah' ? c.budget_uah : c.budget_usd).map(o => (
                 <option key={o} value={o}>
                   {o}
@@ -442,7 +422,6 @@ export function Contact() {
             <label className="no-select" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
               {f.desc_label}
             </label>
-
             <textarea
               placeholder={f.desc_placeholder}
               rows={4}
@@ -477,21 +456,40 @@ export function Contact() {
               fontWeight: 600,
               fontSize: 14,
               border: 'none',
-              cursor: hasError ? 'not-allowed' : 'pointer',
+              cursor: loading ? 'wait' : hasError ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: 8,
               transition: 'all 0.2s',
-              background: hasError ? '#ef4444' : sent ? '#22c55e' : isDark ? 'white' : '#0a0a0a',
-              color: hasError || sent ? 'white' : isDark ? '#0a0a0a' : 'white',
-              opacity: hasError ? 0.95 : 1,
+              background:
+                hasError || serverError
+                  ? '#ef4444'
+                  : sent
+                    ? '#22c55e'
+                    : isDark
+                      ? 'white'
+                      : '#0a0a0a',
+              color: hasError || sent || serverError ? 'white' : isDark ? '#0a0a0a' : 'white',
+              opacity: hasError || loading ? 0.75 : 1,
             }}
           >
             {hasError ? (
               c.button_error
+            ) : serverError ? (
+              lang === 'uk' ? (
+                '⚠️ Помилка. Спробуйте ще раз.'
+              ) : (
+                '⚠️ Error. Please try again.'
+              )
             ) : sent ? (
               `✓ ${f.submitted}`
+            ) : loading ? (
+              lang === 'uk' ? (
+                'Надсилаємо...'
+              ) : (
+                'Sending...'
+              )
             ) : (
               <>
                 {f.submit}
@@ -537,7 +535,6 @@ export function Contact() {
             >
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.269c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.088 14.15l-2.967-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.735.436z" />
             </svg>
-
             <span className="tg-btn-full">{f.tg_btn}</span>
             <span className="tg-btn-short">Telegram</span>
           </a>
@@ -551,38 +548,16 @@ export function Contact() {
           gap: 64px;
           align-items: start;
         }
-
         @media (max-width: 768px) {
-          .contact-layout {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-
-          .contact-info {
-            order: -1;
-          }
-
-          .contact-form > div[style*="grid-template-columns"] {
-            grid-template-columns: 1fr !important;
-          }
+          .contact-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .contact-info { order: -1; }
+          .contact-form > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
         }
-
-        .tg-btn-short {
-          display: none;
-        }
-
-        .tg-btn-full {
-          display: inline;
-        }
-
+        .tg-btn-short { display: none; }
+        .tg-btn-full { display: inline; }
         @media (max-width: 400px) {
-          .tg-btn-full {
-            display: none;
-          }
-
-          .tg-btn-short {
-            display: inline;
-          }
+          .tg-btn-full { display: none; }
+          .tg-btn-short { display: inline; }
         }
       `}</style>
     </section>
