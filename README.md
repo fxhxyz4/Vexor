@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vexor — vexor.team
 
-## Getting Started
+Website for Vexor, a software development studio from Ukraine.
 
-First, run the development server:
+> **English** · [Українська](README-uk.md)
+
+## Stack
+
+| Layer      | Tech                    |
+| ---------- | ----------------------- |
+| Framework  | Next.js 16 (App Router) |
+| Language   | TypeScript (strict)     |
+| Styles     | Tailwind CSS v4         |
+| Animations | Framer Motion 12        |
+| Content    | MDX (next-mdx-remote)   |
+| i18n       | JSON files (uk/en)      |
+
+## Getting started
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev          # development server
+npm run build        # production build
+npm run lint         # ESLint
+npm run type-check   # TypeScript check
+npm run test         # Jest unit tests
+npm run test:e2e     # Playwright E2E tests
+npm run format       # Prettier
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── components/      # Navbar, Hero, Services, Work, About, FAQ, Contact, Footer
+├── i18n/            # uk.json, en.json — all copy and data
+├── lib/             # context (theme + lang), mdx utils
+├── data/            # site.ts — social links
+└── work/            # /work page and [slug] case studies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+content/work/
+├── uk/              # MDX case studies in Ukrainian
+└── en/              # MDX case studies in English
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+public/assets/projects/   # project preview images
+```
 
-## Deploy on Vercel
+## Content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All text lives in `app/i18n/uk.json` and `app/i18n/en.json` — services, team, FAQ, navigation, contact form copy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Case studies are MDX files in `content/work/{uk,en}/`. Frontmatter fields: `title`, `type`, `description`, `stack`, `year`, `client`, `gradient`, `image`, `github`, `demo`, `dribbble`, `figma`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE.md)
