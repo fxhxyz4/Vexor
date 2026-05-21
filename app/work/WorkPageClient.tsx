@@ -63,7 +63,7 @@ export function WorkPageClient({
           >
             <path d="M19 12H5M12 5l-7 7 7 7" />
           </svg>
-          {w.back}
+          {w.back2}
         </Link>
 
         <motion.div
