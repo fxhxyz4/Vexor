@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for Vexor website and Telegram bot.',
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 };
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (

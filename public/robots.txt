@@ -4,6 +4,7 @@ Allow: /
 # Disallow admin/api routes
 Disallow: /api/
 Disallow: /_next/
+Disallow: /privacy
 
 # Sitemap
 Sitemap: https://vexor.team/sitemap.xml
