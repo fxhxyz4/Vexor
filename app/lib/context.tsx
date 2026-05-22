@@ -15,7 +15,7 @@ interface AppCtx {
 const Ctx = createContext<AppCtx>({} as AppCtx);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [lang, setLang] = useState<Lang>('uk');
   const [mounted, setMounted] = useState(false);
 
