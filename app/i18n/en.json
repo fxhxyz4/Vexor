@@ -120,23 +120,27 @@
     ],
     "team_list": [
       {
-        "id": "oleg",
         "initials": "OV",
         "name": "Oleh V.",
         "role": "Fullstack Developer",
-        "desc": "5 years of experience. Specializes in Next.js, Node.js, and UI/UX design. Built platforms for fintech and e-commerce.",
+        "desc": "5 years of experience. Specializes in Next.js, Node.js and UI/UX design. Built platforms for fintech and e-commerce.",
         "skills": ["Next.js", "Node.js", "UI/UX"]
       },
       {
-        "id": "viktor",
         "initials": "VL",
         "name": "Victor L.",
         "role": "Backend Developer",
-        "desc": "4 years of experience. Worked with 30+ projects from idea to finished product. Python (FastAPI), Java (SpringBoot), AI integration.",
+        "desc": "4 years of experience. Worked on 30+ projects from idea to finished product. Python (FastAPI), Java (SpringBoot), AI integration.",
         "skills": ["FastAPI", "SpringBoot", "Ollama"]
       },
       {
-        "id": "rostyslav",
+        "initials": "VK",
+        "name": "Vadym K.",
+        "role": "Fullstack Developer",
+        "desc": "React and TypeScript since 2023. Writes clean, accessible code. Performance is his passion.",
+        "skills": ["React", "TypeScript", "SpringBoot"]
+      },
+      {
         "initials": "RM",
         "name": "Rostyslav M.",
         "role": "Backend Developer",
@@ -144,23 +148,13 @@
         "skills": [".NET", "ASP.NET", "PostgreSQL"]
       },
       {
-        "id": "danila",
-        "initials": "DM",
-        "name": "Danylo M.",
-        "role": "Fullstack Developer",
-        "desc": "React and TypeScript since 2023. Writes clean, accessible code. Performance is his passion.",
-        "skills": ["React", "TypeScript", "SpringBoot"]
-      },
-      {
-        "id": "kirilo",
-        "initials": "KS",
-        "name": "Kyrylo S.",
+        "initials": "AB",
+        "name": "Andriy B.",
         "role": "Mobile Developer",
         "desc": "React Native and Flutter from scratch to App Store. Published 6+ apps for iOS and Android.",
         "skills": ["React Native", "Flutter", "Java"]
       },
       {
-        "id": "danylo",
         "initials": "DH",
         "name": "Danylo H.",
         "role": "Project Manager",

@@ -185,7 +185,7 @@ export function WorkPageClient({
                     {p.image ? (
                       <img
                         src={p.image}
-                        alt={p.title}
+                        alt={`${p.title} — ${p.type} by Vexor. ${p.description.slice(0, 80)}`}
                         style={{
                           width: '100%',
                           height: '100%',

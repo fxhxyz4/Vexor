@@ -1,13 +1,14 @@
 User-agent: *
 Allow: /
-
-# Disallow admin/api routes
 Disallow: /api/
 Disallow: /_next/
-Disallow: /privacy
 
-# Sitemap
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
 Sitemap: https://vexor.team/sitemap.xml
-
-# Crawl-delay for bots
-Crawl-delay: 10
