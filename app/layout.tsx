@@ -310,7 +310,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uk">
       <head>
-        <meta http-equiv="content-language" content="uk, en" />
         {/* Icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
@@ -328,7 +327,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Preconnect */}
         <link rel="preconnect" href="https://vexor.team" />
-        <link rel="canonical" href="https://vexor.team" />
 
         {/* JSON-LD */}
         <script

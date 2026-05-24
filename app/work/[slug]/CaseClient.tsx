@@ -104,7 +104,7 @@ export function CaseContent({
           {post.image ? (
             <img
               src={post.image}
-              alt={post.title}
+              alt={`${post.title} — ${post.type} by Vexor. ${post.description}`}
               style={{
                 width: '100%',
                 height: 'auto',

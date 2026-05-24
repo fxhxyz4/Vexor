@@ -60,7 +60,7 @@ export function Work() {
                   {(p as { image?: string }).image ? (
                     <img
                       src={(p as { image?: string }).image}
-                      alt={p.name}
+                      alt={`${p.name} — ${p.type} by Vexor. ${p.desc}`}
                       style={{
                         width: '100%',
                         height: '100%',

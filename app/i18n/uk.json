@@ -120,7 +120,6 @@
     ],
     "team_list": [
       {
-        "id": "oleg",
         "initials": "ОВ",
         "name": "Олег В.",
         "role": "Fullstack Developer",
@@ -128,7 +127,6 @@
         "skills": ["Next.js", "Node.js", "UI/UX"]
       },
       {
-        "id": "viktor",
         "initials": "ВЛ",
         "name": "Віктор Л.",
         "role": "Backend Developer",
@@ -136,7 +134,13 @@
         "skills": ["FastAPI", "SpringBoot", "Ollama"]
       },
       {
-        "id": "rostyslav",
+        "initials": "ВК",
+        "name": "Вадим К.",
+        "role": "Fullstack Developer",
+        "desc": "React та TypeScript з 2023 року. Пише чистий, доступний код. Перфоманс — його стихія.",
+        "skills": ["React", "TypeScript", "SpringBoot"]
+      },
+      {
         "initials": "РМ",
         "name": "Ростислав М.",
         "role": "Backend Developer",
@@ -144,27 +148,17 @@
         "skills": [".NET", "ASP.NET", "PostgreSQL"]
       },
       {
-        "id": "danila",
-        "initials": "ДМ",
-        "name": "Данило М.",
-        "role": "Fullstack Developer",
-        "desc": "React та TypeScript з 2023 року. Пише чистий, доступний код. Перфоманс — його стихія.",
-        "skills": ["React", "TypeScript", "SpringBoot"]
-      },
-      {
-        "id": "kirilo",
-        "initials": "КС",
-        "name": "Кирило С.",
+        "initials": "АБ",
+        "name": "Андрій Б.",
         "role": "Mobile Developer",
         "desc": "React Native та Flutter з нуля до App Store. Публікував 6+ додатків для iOS та Android.",
         "skills": ["React Native", "Flutter", "Java"]
       },
       {
-        "id": "danylo",
         "initials": "ДХ",
         "name": "Данило Х.",
         "role": "Project Manager",
-        "desc": "Тримає всі нитки в руках. Гарантує, що проєкт здається вчасно, а клієнт завжди в курсі.",
+        "desc": "Тримає всі нитки в руках. Гарантує що проєкт здається вчасно, а клієнт завжди в курсі.",
         "skills": ["Agile", "Scrum", "Jira"]
       }
     ]

@@ -8,6 +8,8 @@ export async function generateStaticParams() {
   return getAllWorkSlugs().map(slug => ({ slug }));
 }
 
+const baseUrl = 'https://vexor.team';
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,7 +18,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getWorkBySlug(slug, 'uk');
   if (!post) return {};
-  return { title: post.title, description: post.description };
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: { canonical: `${baseUrl}/work/${slug}` },
+    openGraph: {
+      title: `${post.title} — Vexor`,
+      description: post.description,
+      url: `${baseUrl}/work/${slug}`,
+      type: 'article',
+      images: post.image
+        ? [{ url: post.image, width: 1200, height: 630, alt: post.title }]
+        : [{ url: '/og-image.png', width: 1200, height: 630 }],
+    },
+  };
 }
 
 const mdxComponents = {
@@ -69,19 +84,51 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
   const mdxUk = <MDXRemote source={postUk.content} components={mdxComponents} />;
   const mdxEn = postEn ? <MDXRemote source={postEn.content} components={mdxComponents} /> : mdxUk;
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Vexor', item: baseUrl },
+      { '@type': 'ListItem', position: 2, name: 'Projects', item: `${baseUrl}/work` },
+      { '@type': 'ListItem', position: 3, name: postUk.title, item: `${baseUrl}/work/${slug}` },
+    ],
+  };
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: postUk.title,
+    description: postUk.description,
+    url: `${baseUrl}/work/${slug}`,
+    creator: { '@id': `${baseUrl}/#organization` },
+    dateCreated: String(postUk.year),
+    keywords: postUk.stack.join(', '),
+    ...(postUk.image ? { image: `${baseUrl}${postUk.image}` } : {}),
+  };
+
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--bg)', paddingTop: 80 }}>
-      <article
-        style={{
-          maxWidth: 760,
-          margin: '0 auto',
-          padding: 'clamp(40px,6vw,80px) clamp(16px,5vw,48px)',
-        }}
-      >
-        <BackLink href="/work" />
-        <CaseContent postUk={postUk} postEn={postEn ?? postUk} mdxUk={mdxUk} mdxEn={mdxEn} />
-        <CTARow post={postUk} postEn={postEn ?? postUk} />
-      </article>
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <main style={{ minHeight: '100vh', background: 'var(--bg)', paddingTop: 80 }}>
+        <article
+          style={{
+            maxWidth: 760,
+            margin: '0 auto',
+            padding: 'clamp(40px,6vw,80px) clamp(16px,5vw,48px)',
+          }}
+        >
+          <BackLink href="/work" />
+          <CaseContent postUk={postUk} postEn={postEn ?? postUk} mdxUk={mdxUk} mdxEn={mdxEn} />
+          <CTARow post={postUk} postEn={postEn ?? postUk} />
+        </article>
+      </main>
+    </>
   );
 }
