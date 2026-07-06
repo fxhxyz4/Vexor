@@ -6,10 +6,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import './Work.css';
 
+interface Project {
+  slug: string;
+  name: string;
+  type: string;
+  desc: string;
+  gradient?: string;
+  image?: string;
+  stack: string[];
+}
+
 export const Work = () => {
   const { tr } = useApp();
+
+  // Безопасная проверка: если контекст еще грузится, отдаем пустой контейнер,
+  // чтобы не сломать рендеринг на мобильных устройствах
+  if (!tr || !tr.work) {
+    return <div className="section-wrap" style={{ minHeight: '400px' }} />;
+  }
+
   const w = tr.work;
-  const projects = w.projects_list || [];
+  const projects: Project[] = w.projects_list || [];
 
   return (
     <FadeIn>
@@ -30,12 +47,13 @@ export const Work = () => {
               <Link href={`/work/${p.slug}`} className="work-card-link">
                 <div className="work-card-container">
                   <div className="work-card-image" style={{ background: p.gradient }}>
-                    {(p as { image?: string }).image ? (
+                    {p.image ? (
                       <Image
-                        src={(p as { image?: string }).image!}
+                        src={p.image}
                         alt={`${p.name} — ${p.type} by Vexor. ${p.desc}`}
                         fill
-                        sizes="(max-width: 560px) 33vw, (max-width: 900px) 50vw, 33vw"
+                        /* Исправлено: 100vw на мобильных, так как сетка перестраивается в 1 колонку */
+                        sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
                         style={{ objectFit: 'cover' }}
                         priority={i === 0}
                         loading={i === 0 ? undefined : 'lazy'}
@@ -53,7 +71,7 @@ export const Work = () => {
                     <h3 className="work-card-title">{p.name}</h3>
                     <p className="work-card-desc">{p.desc}</p>
                     <div className="work-card-tags no-select">
-                      {p.stack.map(tag => (
+                      {p.stack?.map(tag => (
                         <span key={tag} className="work-card-tag">
                           {tag}
                         </span>
