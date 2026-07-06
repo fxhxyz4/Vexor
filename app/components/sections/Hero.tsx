@@ -21,7 +21,7 @@ export const Hero = () => {
     { num: '30+', label: s.projects },
     { num: '4+', label: s.years },
     { num: '92%', label: s.clients },
-    { num: 'UA → EU', label: s.vector },
+    { num: 'UA + EU', label: s.vector },
   ];
 
   return (
