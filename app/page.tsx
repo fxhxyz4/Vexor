@@ -1,11 +1,21 @@
-import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import { Work } from './components/Work';
-import { About } from './components/About';
-import { FAQ } from './components/FAQ';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+import { Hero } from './components/sections/Hero';
+import dynamic from 'next/dynamic';
 import uk from './i18n/uk.json';
+
+const Services = dynamic(() => import('./components/sections/Services').then(mod => mod.Services), {
+  ssr: true,
+});
+const Work = dynamic(() => import('./components/sections/Work').then(mod => mod.Work), {
+  ssr: true,
+});
+const About = dynamic(() => import('./components/sections/About').then(mod => mod.About), {
+  ssr: true,
+});
+const FAQ = dynamic(() => import('./components/sections/FAQ').then(mod => mod.FAQ), { ssr: true });
+const Contact = dynamic(() => import('./components/sections/Contact').then(mod => mod.Contact), {
+  ssr: true,
+});
+const Footer = dynamic(() => import('./components/Footer').then(mod => mod.Footer), { ssr: true });
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -20,7 +30,7 @@ const faqJsonLd = {
   })),
 };
 
-export default function Home() {
+export const Home = () => {
   return (
     <>
       <script
@@ -38,4 +48,6 @@ export default function Home() {
       <Footer />
     </>
   );
-}
+};
+
+export default Home;

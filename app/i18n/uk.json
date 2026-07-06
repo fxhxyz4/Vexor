@@ -11,7 +11,7 @@
     "title1": "Ми будуємо те, ",
     "title2": "що ви запускаєте.",
     "sub": "Аутсорс-команда з розробки сайтів, застосунків та дизайну продуктів. Від ідеї до готового рішення — без зайвих слів.",
-    "cta_primary": "Розпочати проєкт →",
+    "cta_primary": "Розпочати проєкт",
     "cta_secondary": "Переглянути роботи"
   },
   "stats": {
@@ -46,21 +46,21 @@
     "client": "Клієнт",
     "year": "Рік",
     "stack": "Стек",
-    "discuss": "Обговорити схожий проєкт →",
+    "discuss": "Обговорити схожий проєкт",
     "github": "GitHub",
     "back": "Всі проєкти",
     "back2": "На головну",
     "demo": "Демо",
     "projects_list": [
       {
-        "slug": "krepa",
-        "type": "Landing Page",
-        "name": "Krepa",
-        "desc": "Промо-лендинг для фітнес застосунку з анімаціями та CTA для завантаження.",
-        "stack": ["Next.js", "Framer Motion", "Tailwind"],
-        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
-        "github": "https://github.com/vexorteam/Krepa",
-        "image": "/assets/projects/krepa.png"
+        "slug": "roksi",
+        "type": "Design",
+        "name": "Roksi Shop",
+        "desc": "UI/UX дизайн інтернет-магазину жіночого одягу.",
+        "stack": ["Figma", "UI/UX", "E-commerce"],
+        "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
+        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop",
+        "image": "/assets/projects/roksi.png"
       },
       {
         "slug": "strym",
@@ -73,14 +73,24 @@
         "image": "/assets/projects/strym.png"
       },
       {
-        "slug": "roksi-shop",
+        "slug": "krepa",
+        "type": "Landing Page",
+        "name": "Krepa",
+        "desc": "Промо-лендинг для фітнес застосунку з анімаціями та CTA для завантаження.",
+        "stack": ["Next.js", "Framer Motion", "Tailwind"],
+        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
+        "github": "https://github.com/vexorteam/Krepa",
+        "image": "/assets/projects/krepa.png"
+      },
+      {
+        "slug": "notiq",
         "type": "Design",
-        "name": "Roksi Shop",
-        "desc": "UI/UX дизайн інтернет-магазину жіночого одягу.",
-        "stack": ["Figma", "UI/UX", "E-commerce"],
+        "name": "Notiq ",
+        "desc": "UI/UX дизайн кросплатформного застосунку для нотаток.",
+        "stack": ["Figma", "UI/UX", "Prototype"],
         "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
-        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop",
-        "image": "/assets/projects/roksi.png"
+        "dribbble": "https://dribbble.com/shots/27040568-Notiq-website",
+        "image": "/assets/projects/notiq.png"
       }
     ]
   },
@@ -248,7 +258,12 @@
     ],
     "missing_fields": "Будь ласка, заповніть обов'язкові поля: Ім'я та Контакт.",
     "invalid_script": "Недопустимий ввід у формі.",
-    "button_error": "Недопустимий ввід"
+    "button_error": "Недопустимий ввід",
+    "name_too_short": "Ім'я занадто коротке (мінімум 2 символи).",
+    "contact_too_short": "Контактні дані занадто короткі.",
+    "contact_invalid": "Будь ласка, вкажіть коректний Email або Telegram (починаючи з @).",
+    "server_error": "⚠️ Помилка. Спробуйте ще раз.",
+    "sending": "Надсилаємо..."
   },
   "footer": {
     "rights": "Всі права захищені.",
@@ -256,13 +271,20 @@
     "telegram": "Telegram",
     "contact": "Контакт",
     "privacy": "Політика конфіденційності",
-    "sitemap": "Карта сайту"
+    "sitemap": "Карта сайту",
+    "cookies": "Кукi",
+    "cookie_settings": "Налаштування cookies"
   },
   "meta": {
     "title": "Vexor — Розробка сайтів, застосунків та дизайн продуктів",
     "description": "Аутсорс-команда з розробки сайтів, мобільних застосунків та дизайну продуктів в Україні. Next.js, React Native, Figma.",
     "og_title": "Vexor — We build what you ship.",
     "og_description": "Аутсорс-команда з розробки сайтів, застосунків та дизайну продуктів. Від ідеї до готового рішення."
+  },
+  "privacy": {
+    "title": "Політика конфіденційності",
+    "updated": "Останнє оновлення: Червень 2025",
+    "questions": "Запитання? Зв'яжіться з нами за адресою"
   },
   "services_list": [
     {

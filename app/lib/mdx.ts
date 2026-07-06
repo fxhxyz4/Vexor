@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
+import path from 'path';
+import fs from 'fs';
 
 const WORK_DIR = path.join(process.cwd(), 'content/work');
 
@@ -28,19 +28,19 @@ export interface WorkPost extends WorkMeta {
   link?: string;
 }
 
-function getLangDir(lang: string): string {
+const getLangDir = (lang: string): string => {
   return path.join(WORK_DIR, lang === 'en' ? 'en' : 'uk');
-}
+};
 
-export function getAllWorkSlugs(): string[] {
+export const getAllWorkSlugs = (): string[] => {
   const dir = path.join(WORK_DIR, 'uk');
   return fs
     .readdirSync(dir)
     .filter(f => f.endsWith('.mdx'))
     .map(f => f.replace('.mdx', ''));
-}
+};
 
-export function getAllWork(lang = 'uk'): WorkMeta[] {
+export const getAllWork = (lang = 'uk'): WorkMeta[] => {
   return getAllWorkSlugs().map(slug => {
     const dir = getLangDir(lang);
     const filePath = path.join(dir, `${slug}.mdx`);
@@ -50,9 +50,9 @@ export function getAllWork(lang = 'uk'): WorkMeta[] {
     const { data } = matter(file);
     return { slug, ...data } as WorkMeta;
   });
-}
+};
 
-export function getWorkBySlug(slug: string, lang = 'uk'): WorkPost | null {
+export const getWorkBySlug = (slug: string, lang = 'uk'): WorkPost | null => {
   try {
     const dir = getLangDir(lang);
     const filePath = path.join(dir, `${slug}.mdx`);
@@ -64,4 +64,4 @@ export function getWorkBySlug(slug: string, lang = 'uk'): WorkPost | null {
   } catch {
     return null;
   }
-}
+};

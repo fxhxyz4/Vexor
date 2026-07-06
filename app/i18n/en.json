@@ -11,7 +11,7 @@
     "title1": "We build what ",
     "title2": "you ship.",
     "sub": "Outsource team for web, mobile and product design. From idea to ready solution — no fluff, just results.",
-    "cta_primary": "Start a project →",
+    "cta_primary": "Start a project",
     "cta_secondary": "View our work"
   },
   "stats": {
@@ -46,21 +46,21 @@
     "client": "Client",
     "year": "Year",
     "stack": "Stack",
-    "discuss": "Discuss a similar project →",
+    "discuss": "Discuss a similar project",
     "github": "GitHub",
     "back": "All projects",
     "back2": "Go Home",
     "demo": "Demo",
     "projects_list": [
       {
-        "slug": "krepa",
-        "type": "Landing Page",
-        "name": "Krepa",
-        "desc": "Promo landing page for a fitness app with animations and CTA for download.",
-        "stack": ["Next.js", "Framer Motion", "Tailwind"],
-        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
-        "github": "https://github.com/vexorteam/Krepa",
-        "image": "/assets/projects/krepa.png"
+        "slug": "roksi",
+        "type": "Design",
+        "name": "Roksi Shop",
+        "desc": "UI/UX design of an online store for women's clothing.",
+        "stack": ["Figma", "UI/UX", "E-commerce"],
+        "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
+        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop",
+        "image": "/assets/projects/roksi.png"
       },
       {
         "slug": "strym",
@@ -73,14 +73,24 @@
         "image": "/assets/projects/strym.png"
       },
       {
-        "slug": "roksi-shop",
+        "slug": "krepa",
+        "type": "Landing Page",
+        "name": "Krepa",
+        "desc": "Promo landing page for a fitness app with animations and CTA for download.",
+        "stack": ["Next.js", "Framer Motion", "Tailwind"],
+        "gradient": "linear-gradient(135deg,#0f1a0f 0%,#1a3a1a 100%)",
+        "github": "https://github.com/vexorteam/Krepa",
+        "image": "/assets/projects/krepa.png"
+      },
+      {
+        "slug": "notiq",
         "type": "Design",
-        "name": "Roksi Shop",
-        "desc": "UI/UX design of an online store for women's clothing.",
-        "stack": ["Figma", "UI/UX", "E-commerce"],
+        "name": "Notiq",
+        "desc": "UI/UX design for a cross-platform note-taking app.",
+        "stack": ["Figma", "UI/UX", "Prototype"],
         "gradient": "linear-gradient(135deg,#1a0a14 0%,#3a1a2a 100%)",
-        "dribbble": "https://dribbble.com/shots/23611735-roksi-shop",
-        "image": "/assets/projects/roksi.png"
+        "dribbble": "https://dribbble.com/shots/27040568-Notiq-website",
+        "image": "/assets/projects/notiq.png"
       }
     ]
   },
@@ -248,7 +258,12 @@
     ],
     "missing_fields": "Please fill in the required fields: Name and Contact.",
     "invalid_script": "Invalid input in the form.",
-    "button_error": "Invalid input"
+    "button_error": "Invalid input",
+    "name_too_short": "The name is too short (minimum 2 characters).",
+    "contact_too_short": "Contact information is too short.",
+    "contact_invalid": "Please provide a valid Email or Telegram username (starting with @).",
+    "server_error": "⚠️ Error. Please try again.",
+    "sending": "Sending..."
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -256,13 +271,20 @@
     "telegram": "Telegram",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "sitemap": "Sitemap"
+    "sitemap": "Sitemap",
+    "cookies": "Cookies",
+    "cookie_settings": "Cookie settings"
   },
   "meta": {
     "title": "Vexor — Web & Mobile Development Outsource Team",
     "description": "Outsource software development team from Ukraine. Websites, mobile apps, product design. Next.js, React Native, Figma.",
     "og_title": "Vexor — We build what you ship.",
     "og_description": "Outsource team for web, mobile and product design. From idea to ready solution."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: June 2025",
+    "questions": "Questions? Reach us at"
   },
   "services_list": [
     {

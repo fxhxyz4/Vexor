@@ -6,6 +6,6 @@ export type Translations = typeof uk;
 
 export const translations: Record<Lang, Translations> = { uk, en };
 
-export function getT(lang: Lang): Translations {
+export const getT = (lang: Lang): Translations => {
   return translations[lang];
-}
+};

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const escMd = (text: string) => String(text).replace(/[_*[\]()~`>#+\-=|{}.!\\]/g, '\\$&');
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
   try {
     const { name, contact, projectType, budget, desc } = await req.json();
 
@@ -29,6 +29,10 @@ export async function POST(req: NextRequest) {
       `🌐 *Джерело:* vexor\\.team`,
     ].join('\n');
 
+    if (!BOT_TOKEN || process.env.PLAYWRIGHT_TEST === 'true' || process.env.NODE_ENV === 'test') {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
     const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -42,6 +46,7 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const err = await res.json();
       console.error('Telegram error:', err);
+
       return NextResponse.json({ error: 'Failed to send message' }, { status: 502 });
     }
 
@@ -50,4 +55,4 @@ export async function POST(req: NextRequest) {
     console.error('Contact API error:', e);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-}
+};

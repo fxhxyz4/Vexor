@@ -1,7 +1,7 @@
-import { MetadataRoute } from 'next';
 import { getAllWorkSlugs } from './lib/mdx';
+import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const sitemap = (): MetadataRoute.Sitemap => {
   const base = 'https://vexor.team';
   const now = new Date();
 
@@ -32,5 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     },
+    {
+      url: `${base}/cookies`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
   ];
-}
+};
+
+export default sitemap;

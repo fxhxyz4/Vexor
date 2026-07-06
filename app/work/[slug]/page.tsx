@@ -1,23 +1,30 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { CaseBackLink, CTARow, CaseContent } from './CaseClient';
 import { getWorkBySlug, getAllWorkSlugs } from '../../lib/mdx';
-import { BackLink, CTARow, CaseContent } from './CaseClient';
+import { Footer } from '@/app/components/Footer';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import './CasePage.css';
 
-export async function generateStaticParams() {
-  return getAllWorkSlugs().map(slug => ({ slug }));
+interface PageProps {
+  params: Promise<{ slug: string }>;
 }
+
+export const generateStaticParams = () => {
+  return getAllWorkSlugs().map(slug => ({ slug }));
+};
 
 const baseUrl = 'https://vexor.team';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const { slug } = await params;
-  const post = getWorkBySlug(slug, 'uk');
+
+  const postUk = getWorkBySlug(slug, 'uk');
+  const postEn = getWorkBySlug(slug, 'en');
+  const post = postUk || postEn;
+
   if (!post) return {};
+
   return {
     title: post.title,
     description: post.description,
@@ -32,78 +39,59 @@ export async function generateMetadata({
         : [{ url: '/og-image.png', width: 1200, height: 630 }],
     },
   };
-}
+};
 
 const mdxComponents = {
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      style={{
-        fontSize: 'clamp(20px,3vw,28px)',
-        fontWeight: 700,
-        letterSpacing: -0.8,
-        color: 'var(--text-primary)',
-        marginTop: 48,
-        marginBottom: 16,
-        lineHeight: 1.2,
-      }}
-      {...props}
-    />
-  ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 18 }}
-      {...props}
-    />
-  ),
-  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul
-      style={{
-        paddingLeft: 20,
-        marginBottom: 18,
-        display: 'flex',
-        flexDirection: 'column' as const,
-        gap: 8,
-      }}
-      {...props}
-    />
-  ),
-  li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li style={{ fontSize: 15, color: 'var(--text-secondary)', lineHeight: 1.7 }} {...props} />
-  ),
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h2 className="mdx-h2" {...props} />,
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="mdx-p" {...props} />,
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => <ul className="mdx-ul" {...props} />,
+  li: (props: React.HTMLAttributes<HTMLLIElement>) => <li className="mdx-li" {...props} />,
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
-    <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }} {...props} />
+    <strong className="mdx-strong" {...props} />
   ),
 };
 
-export default async function WorkCasePage({ params }: { params: Promise<{ slug: string }> }) {
+const WorkCasePage = async ({ params }: PageProps) => {
   const { slug } = await params;
+
   const postUk = getWorkBySlug(slug, 'uk');
   const postEn = getWorkBySlug(slug, 'en');
-  if (!postUk) notFound();
 
-  const mdxUk = <MDXRemote source={postUk.content} components={mdxComponents} />;
+  if (!postUk && !postEn) notFound();
+
+  const isEn = !postUk && !!postEn;
+  const currentPost = isEn ? postEn! : postUk!;
+
+  const mdxUk = postUk ? <MDXRemote source={postUk.content} components={mdxComponents} /> : null;
   const mdxEn = postEn ? <MDXRemote source={postEn.content} components={mdxComponents} /> : mdxUk;
+
+  const projectsTitle = isEn ? 'Projects' : 'Проєкти';
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Vexor', item: baseUrl },
-      { '@type': 'ListItem', position: 2, name: 'Projects', item: `${baseUrl}/work` },
-      { '@type': 'ListItem', position: 3, name: postUk.title, item: `${baseUrl}/work/${slug}` },
+      { '@type': 'ListItem', position: 2, name: projectsTitle, item: `${baseUrl}/work` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: currentPost.title,
+        item: `${baseUrl}/work/${slug}`,
+      },
     ],
   };
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
-    name: postUk.title,
-    description: postUk.description,
+    name: currentPost.title,
+    description: currentPost.description,
     url: `${baseUrl}/work/${slug}`,
     creator: { '@id': `${baseUrl}/#organization` },
-    dateCreated: String(postUk.year),
-    keywords: postUk.stack.join(', '),
-    ...(postUk.image ? { image: `${baseUrl}${postUk.image}` } : {}),
+    dateCreated: String(currentPost.year),
+    keywords: currentPost.stack.join(', '),
+    ...(currentPost.image ? { image: `${baseUrl}${currentPost.image}` } : {}),
   };
 
   return (
@@ -116,19 +104,21 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <main style={{ minHeight: '100vh', background: 'var(--bg)', paddingTop: 80 }}>
-        <article
-          style={{
-            maxWidth: 760,
-            margin: '0 auto',
-            padding: 'clamp(40px,6vw,80px) clamp(16px,5vw,48px)',
-          }}
-        >
-          <BackLink href="/work" />
-          <CaseContent postUk={postUk} postEn={postEn ?? postUk} mdxUk={mdxUk} mdxEn={mdxEn} />
-          <CTARow post={postUk} postEn={postEn ?? postUk} />
+      <main className="case-main-wrap">
+        <article className="case-article-container">
+          <CaseBackLink href="/work" />
+          <CaseContent
+            postUk={postUk ?? currentPost}
+            postEn={postEn ?? currentPost}
+            mdxUk={mdxUk ?? mdxEn!}
+            mdxEn={mdxEn!}
+          />
+          <CTARow post={postUk ?? currentPost} postEn={postEn ?? currentPost} />
         </article>
       </main>
+      <Footer />
     </>
   );
-}
+};
+
+export default WorkCasePage;
