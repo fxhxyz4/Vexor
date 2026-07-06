@@ -32,11 +32,11 @@ describe('site data integrity', () => {
   });
 
   describe('work.projects_list', () => {
-    it('should have 3 projects in uk', () => {
-      expect(uk.work.projects_list).toHaveLength(3);
+    it('should have 4 projects in uk', () => {
+      expect(uk.work.projects_list).toHaveLength(4);
     });
-    it('should have 3 projects in en', () => {
-      expect(en.work.projects_list).toHaveLength(3);
+    it('should have 4 projects in en', () => {
+      expect(en.work.projects_list).toHaveLength(4);
     });
     it('each project should have required fields', () => {
       uk.work.projects_list.forEach(p => {

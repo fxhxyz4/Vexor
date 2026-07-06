@@ -1,0 +1,284 @@
+.about-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.section-tag {
+  font-size: 11px;
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+.about-descr-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.about-descr-bold {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.about-social-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border-c);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  text-decoration: none;
+}
+.about-social-card:hover {
+  border-color: var(--text-muted);
+}
+.about-card-body {
+  flex-grow: 1;
+}
+.about-card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.about-card-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.about-gh-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border-c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.about-gh-icon {
+  color: var(--text-primary);
+}
+.tg-card-bg {
+  margin-top: 10px !important;
+  background: rgba(38, 169, 224, 0.04) !important;
+  border: 1px solid rgba(38, 169, 224, 0.15) !important;
+}
+.tg-card-bg:hover {
+  border-color: rgba(38, 169, 224, 0.4) !important;
+  background: rgba(38, 169, 224, 0.08) !important;
+}
+.tg-card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c7ba3;
+}
+.tg-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(38, 169, 224, 0.08);
+  border: 1px solid rgba(38, 169, 224, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1c7ba3;
+}
+.tg-arrow-icon {
+  stroke: rgba(38, 169, 224, 0.7);
+}
+html[data-theme='dark'] .tg-card-title {
+  color: #26a9e0;
+}
+html[data-theme='dark'] .tg-icon-wrapper {
+  color: #26a9e0;
+  background: rgba(38, 169, 224, 0.1);
+}
+html[data-theme='dark'] .tg-arrow-icon {
+  stroke: rgba(38, 169, 224, 0.6);
+}
+.about-process-container {
+  background: var(--bg2);
+  border: 1px solid var(--border-c);
+  border-radius: 14px;
+  padding: 32px;
+}
+.about-process-title {
+  font-size: 12px;
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.about-process-step {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-left: 1px solid var(--border-c);
+  margin-left: 11px;
+  position: relative;
+}
+.about-process-step.last {
+  border-left: 1px solid transparent;
+  padding-bottom: 0;
+}
+.about-process-num {
+  font-size: 11px;
+  font-family: var(--font-font-geist-mono), monospace;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--bg2);
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-c);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  left: -13px;
+  top: 0;
+}
+.about-process-step-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  padding-left: 14px;
+}
+.about-process-step-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 14px;
+}
+.team-member-card {
+  padding: 22px;
+  border-radius: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border-c);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  position: relative;
+}
+.team-member-card:hover {
+  border-color: var(--text-muted);
+}
+.team-member-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border-c);
+  color: var(--text-secondary);
+  font-family: var(--font-font-geist-mono), monospace;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.team-member-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.team-member-role {
+  font-size: 12px;
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.team-member-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.team-member-desc.has-skills {
+  margin-bottom: 16px;
+}
+.team-member-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+.team-member-skill-badge {
+  font-size: 10.5px;
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--text-muted);
+  background: var(--bg3);
+  border: 1px solid var(--border-c);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+@media (max-width: 1024px) {
+  .about-two-col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-process-container {
+    padding: 24px;
+  }
+}
+@media (max-width: 320px) {
+  .team-grid > div {
+    padding: 14px !important;
+  }
+  .about-two-col > div > a {
+    padding: 10px !important;
+    gap: 8px !important;
+  }
+  .about-two-col > div > a > div:first-child {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .about-two-col > div > a span,
+  .about-two-col > div > a div {
+    font-size: 12px !important;
+  }
+}

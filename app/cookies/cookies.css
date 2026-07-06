@@ -1,0 +1,118 @@
+.cookies-page-main {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-top: 80px;
+}
+.legal-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 5vw, 48px);
+}
+.section-tag {
+  font-size: 11px;
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+.cookies-title {
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.cookies-updated {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+.cookies-intro {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.cookies-h2 {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 40px;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.cookies-p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.legal-section-body {
+  margin-bottom: 24px;
+}
+.cookies-categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.cookies-category-card {
+  padding: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-c);
+  border-radius: 10px;
+}
+.cookies-category-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.cookies-category-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.cookies-table-container {
+  overflow-x: auto;
+  margin-bottom: 40px;
+}
+.cookies-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.cookies-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-c);
+}
+.cookies-table td {
+  padding: 12px;
+  color: var(--text-secondary);
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-c);
+}
+.cookies-table td.cookies-table-name {
+  font-family: var(--font-font-geist-mono), monospace;
+  color: var(--accent);
+}
+.cookies-manage-btn {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 11px 24px !important;
+  margin-bottom: 40px !important;
+  cursor: pointer;
+}
+.cookies-contact-link {
+  color: var(--accent);
+  text-decoration: underline;
+}

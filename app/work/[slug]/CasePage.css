@@ -1,0 +1,40 @@
+.case-main-wrap {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-top: 80px;
+}
+.case-article-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 5vw, 48px);
+}
+.mdx-h2 {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: var(--text-primary);
+  margin-top: 48px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.mdx-p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.mdx-ul {
+  padding-left: 20px;
+  margin-bottom: 18px;
+  list-style-type: disc;
+}
+.mdx-li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.mdx-strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}

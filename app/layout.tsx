@@ -1,7 +1,23 @@
+import { GoogleAnalytics } from './components/GoogleAnalytics';
+import { CookieConsent } from './components/CookieConsent';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Navbar } from './components/Navbar';
+import { AppProvider } from './lib/context';
+import { cookies } from 'next/headers';
 import type { Metadata } from 'next';
 import './globals.css';
-import { AppProvider } from './lib/context';
-import { Navbar } from './components/Navbar';
+
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
 
 const baseUrl = 'https://vexor.team';
 
@@ -306,27 +322,38 @@ const jsonLd = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const cookieStore = await cookies();
+  const langCookie = cookieStore.get('vexor-lang')?.value;
+
+  const themeCookie = cookieStore.get('vexor-theme')?.value;
+
+  const initialLang = langCookie === 'en' ? 'en' : 'uk';
+  const initialTheme = themeCookie === 'dark' ? 'dark' : 'light';
+
   return (
-    <html lang="uk">
+    <html
+      lang={initialLang}
+      data-theme={initialTheme}
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
         <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
 
         {/* Theme */}
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content={initialTheme === 'dark' ? '#0a0a0a' : '#ffffff'} />
         <meta name="color-scheme" content="light dark" />
 
         {/* Misc */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="darkreader" content="NO-DARKREADER-PLUGIN" />
-
-        {/* Preconnect */}
-        <link rel="preconnect" href="https://vexor.team" />
 
         {/* JSON-LD */}
         <script
@@ -335,12 +362,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
 
-      <body>
-        <AppProvider>
+      <body suppressHydrationWarning>
+        <AppProvider initialTheme={initialTheme} initialLang={initialLang}>
           <Navbar />
           {children}
+          <CookieConsent />
+          <GoogleAnalytics />
         </AppProvider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

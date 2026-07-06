@@ -1,122 +1,61 @@
 'use client';
-import { DiamondMark } from './Logo';
+
+import { EXT_LINK_PROPS } from '../lib/constants';
 import { socialLinks } from '../data/site';
+import { DiamondMark } from './ui/Logo';
 import { useApp } from '../lib/context';
+import { FadeIn } from './FadeIn';
+import './Footer.css';
 
-const EXT = { target: '_blank' as const, rel: 'noopener noreferrer nofollow' };
-
-export function Footer() {
+export const Footer = () => {
   const { tr, toggleTheme, toggleLang, lang, theme } = useApp();
   const f = tr.footer;
   const isDark = theme === 'dark';
 
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--border-c)',
-        padding: '28px 48px',
-        maxWidth: 1196,
-        margin: '0 auto',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 16,
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <DiamondMark size={16} />
-          <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>© 2026 Vexor. {f.rights}</span>
+    <FadeIn>
+      <footer className="footer">
+        <div className="footer-row">
+          <div className="footer-brand">
+            <DiamondMark size={22} />
+            <span className="footer-rights">© 2026 Vexor. {f.rights}</span>
+          </div>
+          <div className="footer-links">
+            <a href={socialLinks.github} {...EXT_LINK_PROPS} className="footer-link">
+              {f.github}
+            </a>
+            <a href={socialLinks.telegram} {...EXT_LINK_PROPS} className="footer-link">
+              {f.telegram}
+            </a>
+            <a href="/#contact" className="footer-link">
+              {f.contact}
+            </a>
+            <a href="/privacy" className="footer-link">
+              {f.privacy}
+            </a>
+            <a href="/cookies" className="footer-link">
+              {f.cookies}
+            </a>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('vexor-open-consent'))}
+              className="footer-link footer-link--btn"
+            >
+              {f.cookie_settings}
+            </button>
+            <a href="/sitemap.xml" className="footer-link">
+              {f.sitemap}
+            </a>
+            <div className="footer-btn-container">
+              <button onClick={toggleLang} className="footer-btn">
+                {lang === 'uk' ? 'EN' : 'UA'}
+              </button>
+              <button onClick={toggleTheme} className="footer-btn footer-btn--size">
+                {isDark ? '☀️' : '🌙'}
+              </button>
+            </div>
+          </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-          <a
-            href={socialLinks.github}
-            {...EXT}
-            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {f.github}
-          </a>
-          <a
-            href={socialLinks.telegram}
-            {...EXT}
-            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {f.telegram}
-          </a>
-          <a
-            href="/#contact"
-            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {f.contact}
-          </a>
-          <a
-            href="/privacy"
-            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {f.privacy}
-          </a>
-          <a
-            href="/sitemap.xml"
-            style={{ fontSize: 13, color: 'var(--text-muted)', transition: 'color 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {f.sitemap}
-          </a>
-          <button
-            onClick={toggleLang}
-            style={{
-              fontSize: 11,
-              fontFamily: 'Geist Mono,monospace',
-              fontWeight: 600,
-              color: 'var(--text-muted)',
-              background: 'transparent',
-              border: '1px solid var(--border-c)',
-              borderRadius: 6,
-              padding: '3px 10px',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.color = 'var(--text-primary)';
-              e.currentTarget.style.borderColor = 'var(--text-muted)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.color = 'var(--text-muted)';
-              e.currentTarget.style.borderColor = 'var(--border-c)';
-            }}
-          >
-            {lang === 'uk' ? 'EN' : 'UA'}
-          </button>
-          <button
-            onClick={toggleTheme}
-            style={{
-              fontSize: 14,
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'var(--text-muted)',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </FadeIn>
   );
-}
+};
