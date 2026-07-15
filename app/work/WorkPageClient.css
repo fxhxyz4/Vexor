@@ -70,7 +70,8 @@
   color: var(--text-muted);
 }
 
-.work-filter-btn:hover {
+.work-filter-btn:hover,
+.work-filter-btn:focus {
   border-color: var(--text-muted);
   color: var(--text-primary);
 }
@@ -127,7 +128,8 @@
 
 /* Hover effect instead of JS implementation */
 
-.work-card-link:hover .work-card-container {
+.work-card-link:hover .work-card-container,
+.work-card-link:focus-visible .work-card-container {
   border-color: var(--text-muted);
   transform: translateY(-3px);
 }

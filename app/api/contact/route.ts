@@ -4,7 +4,7 @@ const escMd = (text: string) => String(text).replace(/[_*[\]()~`>#+\-=|{}.!\\]/g
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { name, contact, projectType, budget, desc } = await req.json();
+    const { name, contact, projectType, budget, budgetLabel, desc } = await req.json();
 
     if (!name?.trim() || !contact?.trim()) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -17,13 +17,15 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 });
     }
 
+    const budgetDisplay = budgetLabel || budget || '—';
+
     const text = [
       '📥 *Нова заявка з сайту*',
       '',
       `👤 *Ім'я:* ${escMd(name)}`,
       `📬 *Контакт:* ${escMd(contact)}`,
       `🔧 *Тип проєкту:* ${escMd(projectType || '—')}`,
-      `💰 *Бюджет:* ${escMd(budget || '—')}`,
+      `💰 *Бюджет:* ${escMd(budgetDisplay)}`,
       `📝 *Опис:* ${escMd(desc || '—')}`,
       '',
       `🌐 *Джерело:* vexor\\.team`,

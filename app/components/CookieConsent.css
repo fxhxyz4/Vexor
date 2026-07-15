@@ -26,7 +26,8 @@ html[data-theme='dark'] .consent-dialog {
   text-decoration: underline;
   transition: opacity 0.2s;
 }
-.consent-policy-link:hover {
+.consent-policy-link:hover,
+.consent-policy-link:focus {
   opacity: 0.75;
 }
 .consent-expanded {

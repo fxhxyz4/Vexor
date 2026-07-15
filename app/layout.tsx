@@ -1,11 +1,14 @@
 import { GoogleAnalytics } from './components/GoogleAnalytics';
 import { CookieConsent } from './components/CookieConsent';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata, Viewport } from 'next';
 import { Navbar } from './components/Navbar';
 import { AppProvider } from './lib/context';
 import { cookies } from 'next/headers';
-import type { Metadata } from 'next';
 import './globals.css';
+
+const isProd = process.env.NODE_ENV === 'production';
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -164,6 +167,11 @@ export const metadata: Metadata = {
     'geo.position': '50.4501;30.5234',
     ICBM: '50.4501, 30.5234',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 const jsonLd = {
@@ -367,6 +375,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <Navbar />
           {children}
           <CookieConsent />
+          {isProd && <Analytics />}
           <GoogleAnalytics />
         </AppProvider>
       </body>

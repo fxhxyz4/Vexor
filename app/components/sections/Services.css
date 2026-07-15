@@ -12,7 +12,8 @@
   padding: 20px 16px;
   transition: background-color 0.2s ease;
 }
-.service-card:hover {
+.service-card:hover,
+.service-card:focus {
   background: var(--bg2) !important;
 }
 .service-icon {

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useApp } from '../../lib/context';
 import { FadeIn } from '../FadeIn';
 import Image from 'next/image';
@@ -8,8 +9,18 @@ import './Work.css';
 
 export const Work = () => {
   const { tr } = useApp();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const w = tr.work;
   const projects = w.projects_list || [];
+
+  if (!mounted) {
+    return <div className="section-wrap" style={{ minHeight: '600px' }} />;
+  }
 
   return (
     <FadeIn>

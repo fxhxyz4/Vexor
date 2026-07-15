@@ -129,7 +129,8 @@
   cursor: pointer;
 }
 
-.primaryCta:hover {
+.primaryCta:hover,
+.primaryCta:focus {
   opacity: 0.85;
 }
 
@@ -142,7 +143,6 @@
   transition: transform 0.2s ease;
 }
 
-/* Стилизация второстепенных кнопок-ссылок кейсов */
 .caseLinkBtn {
   display: inline-flex;
   align-items: center;
@@ -163,8 +163,24 @@
     color 0.2s ease;
 }
 
+.caseLinkBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.caseLinkBtn:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .caseLinkBtn svg {
   display: block;
   flex-shrink: 0;
   transition: transform 0.2s ease;
+}
+
+.caseLinkBtn:hover svg,
+.caseLinkBtn:focus-visible svg {
+  transform: translateX(3px);
 }

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { ArrowRightIcon, TelegramIcon } from '../icons';
 import { EXT_LINK_PROPS } from '../../lib/constants';
 import { socialLinks } from '../../data/site';
+import { budgetBrackets } from '../../data/pricing';
 import { useApp } from '../../lib/context';
 import { FadeIn } from '../FadeIn';
 import './Contact.css';
@@ -23,7 +24,7 @@ const isValidContact = (value: string) => {
 };
 
 export const Contact = () => {
-  const { tr } = useApp();
+  const { tr, lang } = useApp();
   const [sent, setSent] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -52,6 +53,8 @@ export const Contact = () => {
 
   const c = tr.contact;
   const f = c.form;
+
+  const budgetOptions = budgetBrackets[currency === 'uah' ? 'UAH' : 'USD'];
 
   const checkHasError = (overrides: Record<string, string> = {}) => {
     const fields = {
@@ -115,6 +118,9 @@ export const Contact = () => {
     setLoading(true);
     setServerError(false);
 
+    const budgetLabel =
+      budgetOptions.find(b => b.value === budgetValue)?.label[lang] ?? budgetValue;
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -124,6 +130,7 @@ export const Contact = () => {
           contact: contactValue,
           projectType: typeValue,
           budget: budgetValue,
+          budgetLabel,
           desc: descValue,
         }),
       });
@@ -307,9 +314,9 @@ export const Contact = () => {
                 <option value="" disabled>
                   {f.budget_placeholder}
                 </option>
-                {(currency === 'uah' ? c.budget_uah : c.budget_usd).map(o => (
-                  <option key={o} value={o}>
-                    {o}
+                {budgetOptions.map(bracket => (
+                  <option key={bracket.value} value={bracket.value}>
+                    {bracket.label[lang]}
                   </option>
                 ))}
               </select>

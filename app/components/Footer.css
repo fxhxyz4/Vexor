@@ -48,7 +48,8 @@
   transition: color 0.2s ease;
   text-decoration: none;
 }
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus {
   color: var(--text-secondary);
 }
 .footer-link--btn {
@@ -78,7 +79,8 @@
     color 0.2s,
     border-color 0.2s;
 }
-.footer-btn:hover {
+.footer-btn:hover,
+.footer-btn:focus {
   color: var(--text-primary);
   border-color: var(--text-muted);
 }

@@ -45,6 +45,7 @@ export const Navbar = () => {
   const links = [
     { href: '/#services', label: n.services },
     { href: '/#work', label: n.work },
+    { href: '/#testimonials', label: n.testimonials || 'Testimonials' },
     { href: '/#about', label: n.team },
     { href: '/#faq', label: n.faq },
   ];
