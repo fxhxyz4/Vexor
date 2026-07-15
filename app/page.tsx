@@ -5,9 +5,18 @@ import uk from './i18n/uk.json';
 const Services = dynamic(() => import('./components/sections/Services').then(mod => mod.Services), {
   ssr: true,
 });
+
 const Work = dynamic(() => import('./components/sections/Work').then(mod => mod.Work), {
   ssr: true,
 });
+
+const Testimonials = dynamic(
+  () => import('./components/sections/Testimonials').then(mod => mod.Testimonials),
+  {
+    ssr: true,
+  }
+);
+
 const About = dynamic(() => import('./components/sections/About').then(mod => mod.About), {
   ssr: true,
 });
@@ -41,6 +50,7 @@ export const Home = () => {
         <Hero />
         <Services />
         <Work />
+        <Testimonials />
         <About />
         <FAQ />
         <Contact />

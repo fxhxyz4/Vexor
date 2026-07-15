@@ -5,6 +5,7 @@ import { EXT_LINK_PROPS } from '../../lib/constants';
 import { socialLinks } from '../../data/site';
 import { useApp } from '../../lib/context';
 import { FadeIn } from '../FadeIn';
+import Image from 'next/image';
 import './About.css';
 
 export const About = () => {
@@ -78,12 +79,13 @@ export const About = () => {
           </div>
         </div>
 
-        {/* Team Grid */}
         <div className="team-grid about-fade-team-el">
           {teamList.map((m, i) => {
             const currentSkills = m.skills || [];
-            const initials = m.initials || (m.name ? m.name.substring(0, 2).toUpperCase() : '??');
             const hasSkills = currentSkills.length > 0;
+
+            const thisPlaceholder = socialLinks.placeholder;
+            const avatarUrl = m.avatar || `${thisPlaceholder}?id=${i}`;
 
             return (
               <div
@@ -91,7 +93,14 @@ export const About = () => {
                 className="team-member-card"
                 style={{ animationDelay: `${i * 0.06}s` }}
               >
-                <div className="team-member-avatar no-select">{initials}</div>
+                <Image
+                  src={avatarUrl || '/assets/avatar-placeholder.jpg'}
+                  alt={m.name}
+                  width={60}
+                  height={60}
+                  className="team-member-avatar no-select"
+                  priority={false}
+                />
                 <div className="team-member-name">{m.name}</div>
                 <div className="team-member-role no-select">{m.role}</div>
                 <div className={`team-member-desc ${hasSkills ? 'has-skills' : ''}`}>{m.desc}</div>

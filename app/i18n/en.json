@@ -2,6 +2,7 @@
   "nav": {
     "services": "Services",
     "work": "Work",
+    "testimonials": "Testimonials",
     "team": "Team",
     "faq": "FAQ",
     "cta": "Start a project"
@@ -94,6 +95,10 @@
       }
     ]
   },
+  "testimonials": {
+    "tag": "// testimonials",
+    "title": "What customers say"
+  },
   "about": {
     "tag": "// team",
     "title": "Who is behind this",
@@ -130,45 +135,45 @@
     ],
     "team_list": [
       {
-        "initials": "OV",
         "name": "Oleh V.",
         "role": "Fullstack Developer",
         "desc": "5 years of experience. Specializes in Next.js, Node.js and UI/UX design. Built platforms for fintech and e-commerce.",
+        "avatar": "/assets/image1.png",
         "skills": ["Next.js", "Node.js", "UI/UX"]
       },
       {
-        "initials": "VL",
         "name": "Victor L.",
         "role": "Backend Developer",
         "desc": "4 years of experience. Worked on 30+ projects from idea to finished product. Python (FastAPI), Java (SpringBoot), AI integration.",
+        "avatar": "/assets/image2.png",
         "skills": ["FastAPI", "SpringBoot", "Ollama"]
       },
       {
-        "initials": "VK",
         "name": "Vadym K.",
         "role": "Fullstack Developer",
         "desc": "React and TypeScript since 2023. Writes clean, accessible code. Performance is his passion.",
+        "avatar": "/assets/image3.png",
         "skills": ["React", "TypeScript", "SpringBoot"]
       },
       {
-        "initials": "RM",
         "name": "Rostyslav M.",
         "role": "Backend Developer",
         "desc": "API and database architect. Experience with highload systems and microservices.",
+        "avatar": "/assets/image4.png",
         "skills": [".NET", "ASP.NET", "PostgreSQL"]
       },
       {
-        "initials": "AB",
         "name": "Andriy B.",
         "role": "Mobile Developer",
         "desc": "React Native and Flutter from scratch to App Store. Published 6+ apps for iOS and Android.",
+        "avatar": "/assets/image5.png",
         "skills": ["React Native", "Flutter", "Java"]
       },
       {
-        "initials": "DH",
         "name": "Danylo H.",
         "role": "Project Manager",
         "desc": "Holds all the strings. Guarantees the project delivers on time and the client is always in the loop.",
+        "avatar": "/assets/image6.png",
         "skills": ["Agile", "Scrum", "Jira"]
       }
     ]
@@ -240,22 +245,6 @@
       "invalid_input": "Invalid input",
       "fill_required": "Please fill in name and contact"
     },
-    "budget_uah": [
-      "до 8 000 ₴",
-      "8 000 – 30 000 ₴",
-      "30 000 – 80 000 ₴",
-      "80 000 – 200 000 ₴",
-      "200 000+ ₴",
-      "Not sure yet"
-    ],
-    "budget_usd": [
-      "under $200",
-      "$200 – $800",
-      "$800 – $2,000",
-      "$2,000 – $5,000",
-      "$5,000+",
-      "Not sure yet"
-    ],
     "missing_fields": "Please fill in the required fields: Name and Contact.",
     "invalid_script": "Invalid input in the form.",
     "button_error": "Invalid input",
@@ -288,40 +277,58 @@
   },
   "services_list": [
     {
+      "id": "website",
       "icon": "🌐",
       "name": "Website for your business",
       "desc": "Landing page, corporate site or online store. Fast, beautiful and ranking on Google.",
-      "tags": ["Next.js", "Tailwind", "SEO"]
+      "tags": ["Next.js", "Tailwind", "SEO"],
+      "pricingIncludes": "Landing page or business site, mobile-responsive, basic SEO, up to 2 weeks",
+      "pricingNote": "E-commerce and complex structures — quoted after a short brief"
     },
     {
+      "id": "mobileApp",
       "icon": "📱",
       "name": "Mobile application",
       "desc": "iOS and Android at once. Your product in the client's pocket — with a native feel and smooth animations.",
-      "tags": ["React Native", "Flutter"]
+      "tags": ["React Native", "Flutter"],
+      "pricingIncludes": "iOS + Android, core functionality, App Store & Google Play submission",
+      "pricingNote": "Final cost depends on screen count and integrations — exact quote after brief"
     },
     {
+      "id": "webPlatform",
       "icon": "⚙️",
       "name": "Web platform or SaaS",
       "desc": "Personal dashboard, CRM, admin panel or your own service with database and authentication.",
-      "tags": ["Node.js", "PostgreSQL", "API"]
+      "tags": ["Node.js", "PostgreSQL", "API"],
+      "pricingIncludes": "Dashboard, database, authentication, API",
+      "pricingNote": "Send us your idea — we'll estimate within 24 hours"
     },
     {
+      "id": "productDesign",
       "icon": "🎨",
       "name": "Product design",
       "desc": "UI/UX design from scratch or redesign of what you have. A prototype you can show investors tomorrow.",
-      "tags": ["Figma", "UI/UX", "Prototype"]
+      "tags": ["Figma", "UI/UX", "Prototype"],
+      "pricingIncludes": "UI/UX design in Figma, prototype, up to 10 screens",
+      "pricingNote": "Complex systems (dashboards, multi-screen apps) — quoted after brief"
     },
     {
+      "id": "automation",
       "icon": "🧠",
       "name": "Automation & AI",
       "desc": "Telegram bots, AI assistants, ChatGPT/Claude integration — automate routine and add intelligence to your product.",
-      "tags": ["OpenAI", "Claude API", "Telegram API"]
+      "tags": ["OpenAI", "Claude API", "Telegram API"],
+      "pricingIncludes": "Telegram bot or AI-assistant integration into an existing product",
+      "pricingNote": "Scope and logic complexity confirmed after brief"
     },
     {
+      "id": "support",
       "icon": "🚀",
       "name": "Support & growth",
       "desc": "Already have a product? We take it under maintenance: new features, bug fixes, performance, security.",
-      "tags": ["DevOps", "CI/CD", "Support"]
+      "tags": ["DevOps", "CI/CD", "Support"],
+      "pricingIncludes": "Fixes, updates, monitoring",
+      "pricingNote": "Monthly retainer, hours scoped individually"
     }
   ]
 }

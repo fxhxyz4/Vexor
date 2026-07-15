@@ -5,4 +5,5 @@ export const socialLinks = {
   emailDisplay: 'hello@vexor.team',
   telegramDisplay: '@vexor_studio',
   location: 'https://maps.google.com/?q=Kyiv,Ukraine',
+  placeholder: 'https://avatarapi.runflare.run/public/boy',
 };

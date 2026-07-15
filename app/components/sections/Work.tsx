@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useApp } from '../../lib/context';
 import { FadeIn } from '../FadeIn';
 import Image from 'next/image';
@@ -18,15 +19,18 @@ interface Project {
 
 export const Work = () => {
   const { tr } = useApp();
+  const [mounted, setMounted] = useState(false);
 
-  // Безопасная проверка: если контекст еще грузится, отдаем пустой контейнер,
-  // чтобы не сломать рендеринг на мобильных устройствах
-  if (!tr || !tr.work) {
-    return <div className="section-wrap" style={{ minHeight: '400px' }} />;
-  }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const w = tr.work;
-  const projects: Project[] = w.projects_list || [];
+  const projects: Project[] = w?.projects_list || [];
+
+  if (!mounted || !w) {
+    return <div className="section-wrap" style={{ minHeight: '600px' }} />;
+  }
 
   return (
     <FadeIn>
@@ -52,7 +56,6 @@ export const Work = () => {
                         src={p.image}
                         alt={`${p.name} — ${p.type} by Vexor. ${p.desc}`}
                         fill
-                        /* Исправлено: 100vw на мобильных, так как сетка перестраивается в 1 колонку */
                         sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
                         style={{ objectFit: 'cover' }}
                         priority={i === 0}

@@ -1,7 +1,7 @@
 'use client';
 
 import { LegalSection } from '../components/ui/LegalSection';
-import { privacyTranslations } from './privacyData';
+import { privacyTranslations } from '../data/privacy';
 import { Footer } from '../components/Footer';
 import { useApp } from '../lib/context';
 import './privacy.css';

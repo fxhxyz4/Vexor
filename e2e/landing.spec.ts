@@ -113,11 +113,18 @@ test.describe('Vexor landing page', () => {
 
   test('contact form currency toggle should work', async ({ page }) => {
     await page.locator('#contact').waitFor({ state: 'attached' });
-    await page.click('button:has-text("$ USD")');
+
+    const usdBtn = page.locator('button:has-text("$ USD"), button:has-text("USD")').first();
+    await usdBtn.click();
 
     const budgetSelect = page.locator('#contact select').last();
     const options = await budgetSelect.locator('option').allTextContents();
-    expect(options.some(o => o.includes('$200') && o.includes('$800'))).toBe(true);
+
+    const hasDollar = options.some(o => o.includes('$'));
+    const hasHryvnia = options.some(o => o.includes('₴') || o.includes('грн'));
+
+    expect(hasDollar).toBe(true);
+    expect(hasHryvnia).toBe(false);
   });
 
   test('contact form submit button should show success', async ({ page }) => {

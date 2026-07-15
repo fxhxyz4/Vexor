@@ -57,7 +57,8 @@
     background-color 0.2s ease;
   text-decoration: none;
 }
-.about-social-card:hover {
+.about-social-card:hover,
+.about-social-card:focus {
   border-color: var(--text-muted);
 }
 .about-card-body {
@@ -92,7 +93,8 @@
   background: rgba(38, 169, 224, 0.04) !important;
   border: 1px solid rgba(38, 169, 224, 0.15) !important;
 }
-.tg-card-bg:hover {
+.tg-card-bg:hover,
+.tg-card-bg:focus {
   border-color: rgba(38, 169, 224, 0.4) !important;
   background: rgba(38, 169, 224, 0.08) !important;
 }
@@ -193,24 +195,23 @@ html[data-theme='dark'] .tg-arrow-icon {
     border-color 0.2s ease,
     transform 0.2s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .team-member-card:hover {
   border-color: var(--text-muted);
+  transform: translateY(-3px);
 }
 .team-member-avatar {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: var(--bg3);
   border: 1px solid var(--border-c);
-  color: var(--text-secondary);
-  font-family: var(--font-font-geist-mono), monospace;
-  font-size: 14px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 .team-member-name {
   font-size: 16px;

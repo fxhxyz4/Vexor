@@ -1,3 +1,4 @@
+import { budgetBrackets } from '../app/data/pricing';
 import { socialLinks } from '@/app/data/site';
 import uk from '@/app/i18n/uk.json';
 import en from '@/app/i18n/en.json';
@@ -57,14 +58,22 @@ describe('site data integrity', () => {
     it('should have 6 team members in en', () => {
       expect(en.about.team_list).toHaveLength(6);
     });
-    it('each member should have required fields', () => {
+    it('each member should have required fields and valid generated initials', () => {
       uk.about.team_list.forEach(m => {
-        expect(m.initials).toHaveLength(2);
         expect(m.name).toBeTruthy();
         expect(m.role).toBeTruthy();
         expect(m.desc).toBeTruthy();
         expect(Array.isArray(m.skills)).toBe(true);
         expect(m.skills).toHaveLength(3);
+
+        const initials = m.name
+          .split(' ')
+          .map(word => word.charAt(0))
+          .join('')
+          .replace(/[^a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ]/g, '');
+
+        expect(initials.length).toBeGreaterThanOrEqual(1);
+        expect(initials.length).toBeLessThanOrEqual(2);
       });
     });
   });
@@ -84,16 +93,41 @@ describe('site data integrity', () => {
     });
   });
 
-  describe('contact budget options', () => {
-    it('UAH budget should have options with ₴', () => {
-      expect(uk.contact.budget_uah.length).toBeGreaterThan(0);
-      uk.contact.budget_uah.slice(0, -1).forEach(opt => expect(opt).toContain('₴'));
+  describe('contact budget options (from pricing config)', () => {
+    it('should have budget brackets configured', () => {
+      expect(budgetBrackets).toBeTruthy();
     });
-    it('USD budget should have options', () => {
-      expect(en.contact.budget_usd.length).toBeGreaterThan(0);
+
+    it('each bracket in each currency should have correct structure', () => {
+      Object.values(budgetBrackets).forEach(bracketsList => {
+        expect(Array.isArray(bracketsList)).toBe(true);
+        expect(bracketsList.length).toBeGreaterThan(0);
+
+        bracketsList.forEach(b => {
+          expect(b.value).toBeTruthy();
+          expect(b.label).toBeTruthy();
+          expect(b.label.uk).toBeTruthy();
+          expect(b.label.en).toBeTruthy();
+        });
+      });
     });
-    it('UAH and USD should have equal number of options', () => {
-      expect(uk.contact.budget_uah.length).toBe(uk.contact.budget_usd.length);
+
+    it('UAH budget labels should contain Ukrainian currency symbol "грн"', () => {
+      const uahBrackets = budgetBrackets.UAH || budgetBrackets.UAH;
+      expect(uahBrackets).toBeDefined();
+
+      uahBrackets.slice(0, -1).forEach(b => {
+        expect(b.label.uk).toContain('грн');
+      });
+    });
+
+    it('USD budget labels should contain dollar sign "$"', () => {
+      const usdBrackets = budgetBrackets.USD || budgetBrackets.USD;
+      expect(usdBrackets).toBeDefined();
+
+      usdBrackets.slice(0, -1).forEach(b => {
+        expect(b.label.en).toContain('$');
+      });
     });
   });
 

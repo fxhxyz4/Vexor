@@ -23,8 +23,8 @@
   display: flex;
   flex-direction: column;
 }
-
-.work-card-container:hover {
+.work-card-container:hover,
+.work-card-container:focus {
   border-color: var(--text-muted);
   transform: translateY(-3px);
 }
@@ -136,21 +136,33 @@
     border-color 0.2s;
   text-decoration: none;
 }
-
-.work-view-all-btn:hover {
+.work-view-all-btn:hover,
+.work-view-all-btn:focus {
   color: var(--text-primary);
   border-color: var(--text-muted);
 }
-
-/* Адаптив переписан без использования :last-child, ломающего верстку при смене order */
-@media (max-width: 900px) {
+@media (min-width: 900px) {
   .work-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .work-card-anim:last-child {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .work-card-anim:last-child {
+    display: block !important;
   }
 }
 
 @media (max-width: 600px) {
   .work-grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .work-card-anim:last-child {
+    display: none !important;
   }
 }

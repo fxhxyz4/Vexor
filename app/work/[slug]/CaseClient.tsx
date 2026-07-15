@@ -114,13 +114,13 @@ interface CaseLinkButtonProps {
   simple?: boolean;
 }
 
-export function CaseLinkButton({
+export const CaseLinkButton = ({
   href,
   icon,
   label,
   accentColor,
   simple = false,
-}: CaseLinkButtonProps) {
+}: CaseLinkButtonProps) => {
   return (
     <a
       href={href}
@@ -158,7 +158,7 @@ export function CaseLinkButton({
       {label}
     </a>
   );
-}
+};
 
 export const CTARow = ({ post, postEn }: { post: WorkPost; postEn?: WorkPost }) => {
   const { tr, lang } = useApp();
