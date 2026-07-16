@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from './components/GoogleAnalytics';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { CookieConsent } from './components/CookieConsent';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
@@ -376,6 +377,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           {children}
           <CookieConsent />
           {isProd && <Analytics />}
+          {isProd && <SpeedInsights />}
           <GoogleAnalytics />
         </AppProvider>
       </body>
