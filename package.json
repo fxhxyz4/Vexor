@@ -60,6 +60,7 @@
     "stylelint": "^17.11.1",
     "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "lint-staged": {
