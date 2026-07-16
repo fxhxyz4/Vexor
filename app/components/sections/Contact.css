@@ -126,6 +126,18 @@ textarea.contact-input-field {
   justify-content: space-between;
 }
 
+.contact-currency-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-currency-btn:focus-visible:not(.contact-currency-btn--active) {
+  color: var(--text-primary);
+  background: rgba(var(--accent-rgb, 59, 130, 246), 0.08);
+}
+
 .contact-currency-toggle {
   display: flex;
   gap: 2px;

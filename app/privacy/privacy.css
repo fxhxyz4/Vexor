@@ -63,10 +63,24 @@
   color: var(--text-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: color 0.2s;
+  transition:
+    color 0.2s,
+    opacity 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s;
+  border-radius: 4px;
+  padding: 1px 4px;
+  display: inline-block;
 }
 .privacy-article a:hover {
   color: var(--accent);
+  opacity: 0.85;
+}
+.privacy-article a:focus-visible {
+  outline: none !important;
+  background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+  box-shadow: 0 0 0 2px var(--accent);
+  text-decoration: none;
 }
 .privacy-footer-note {
   font-size: 13px;

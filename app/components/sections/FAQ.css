@@ -42,20 +42,15 @@
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.75;
-  border-top: 1px solid var(--border-c);
   padding-top: 16px;
 }
 .faq-question:focus {
   outline: none;
 }
 .faq-item-card:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
+  border-color: var(--faq-border-color);
   transform: translateY(-2px);
   transition:
     border-color 0.2s ease,
     transform 0.2s ease;
-}
-.faq-question:focus-visible .faq-question-text {
-  color: var(--accent);
 }

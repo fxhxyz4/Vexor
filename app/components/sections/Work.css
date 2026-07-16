@@ -23,17 +23,18 @@
   display: flex;
   flex-direction: column;
 }
-.work-card-container:hover,
-.work-card-container:focus {
-  border-color: var(--text-muted);
-  transform: translateY(-3px);
-}
 
 .work-card-image {
   height: 180px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.work-card-container:hover,
+.work-card-link:focus-visible .work-card-container {
+  border-color: var(--text-muted);
+  transform: translateY(-3px);
 }
 
 .work-card-placeholder {
@@ -66,8 +67,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-
-  /* Исправлено: предотвращает схлопывание контента в Safari на iOS */
   min-height: auto;
 }
 

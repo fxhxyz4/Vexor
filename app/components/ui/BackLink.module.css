@@ -1,0 +1,34 @@
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: var(--mb, 48px);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.backLink:focus-visible {
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.arrowWrapper {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.backLink:hover .arrowWrapper,
+.backLink:focus-visible .arrowWrapper {
+  transform: translateX(-4px);
+}

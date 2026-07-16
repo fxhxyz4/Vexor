@@ -121,38 +121,16 @@ export const CaseLinkButton = ({
   accentColor,
   simple = false,
 }: CaseLinkButtonProps) => {
+  const customStyle = accentColor
+    ? ({ '--btn-accent': accentColor } as React.CSSProperties)
+    : undefined;
+
   return (
     <a
       href={href}
       {...EXT_LINK_PROPS}
-      style={accentColor ? { borderColor: accentColor, color: accentColor } : undefined}
-      className={styles.caseLinkBtn}
-      onMouseEnter={e => {
-        const iconSvg = e.currentTarget.querySelector('svg');
-        if (iconSvg) iconSvg.style.transform = 'scale(1.12)';
-
-        if (accentColor) {
-          e.currentTarget.style.opacity = '0.85';
-          if (!simple) e.currentTarget.style.boxShadow = `0 8px 20px -6px ${accentColor}`;
-        } else {
-          e.currentTarget.style.borderColor = 'var(--text-muted)';
-          e.currentTarget.style.color = 'var(--text-primary)';
-        }
-        if (!simple) e.currentTarget.style.transform = 'translateY(-2px)';
-      }}
-      onMouseLeave={e => {
-        const iconSvg = e.currentTarget.querySelector('svg');
-        if (iconSvg) iconSvg.style.transform = 'scale(1)';
-
-        if (accentColor) {
-          e.currentTarget.style.opacity = '1';
-          if (!simple) e.currentTarget.style.boxShadow = 'none';
-        } else {
-          e.currentTarget.style.borderColor = 'var(--border-c)';
-          e.currentTarget.style.color = 'var(--text-secondary)';
-        }
-        if (!simple) e.currentTarget.style.transform = 'translateY(0)';
-      }}
+      style={customStyle}
+      className={`${styles.caseLinkBtn} ${simple ? styles.simple : ''}`}
     >
       {icon}
       {label}

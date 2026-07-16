@@ -19,6 +19,7 @@ html[data-theme='light'] {
   --dribbble-color: #c2185b;
   --figma-color: #7c3aed;
   --star-color: #ffd900;
+  --faq-border-color: #000000;
 
   color-scheme: light;
 }
@@ -41,6 +42,7 @@ html[data-theme='dark'] {
   --dribbble-color: #ea4c89;
   --figma-color: #a259ff;
   --star-color: #ffe02f;
+  --faq-border-color: #ffffff;
 
   color-scheme: dark;
 }
@@ -108,20 +110,8 @@ pre,
   outline: none !important;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-[role='button']:focus-visible {
-  border-radius: inherit;
-  outline: 2px solid var(--accent, #3b82f6) !important;
-  outline-offset: 3px !important;
-}
-
-a:focus-visible:not([style*='border-radius']),
-button:focus-visible:not([style*='border-radius']) {
-  border-radius: 12px;
+*:focus-visible {
+  outline: none;
 }
 
 /* ── Scrollbar ────────────────────────────────── */
