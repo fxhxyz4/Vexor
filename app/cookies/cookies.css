@@ -105,14 +105,35 @@
   font-family: var(--font-font-geist-mono), monospace;
   color: var(--accent);
 }
-.cookies-manage-btn {
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding: 11px 24px !important;
-  margin-bottom: 40px !important;
-  cursor: pointer;
+.cookies-manage-btn:focus-visible {
+  outline: none !important;
+  border-color: var(--faq-border-color) !important;
+  transform: translateY(-2px);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
 .cookies-contact-link {
   color: var(--accent);
   text-decoration: underline;
+  text-underline-offset: 3px;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+  border-radius: 4px;
+  padding: 1px 4px;
+  display: inline-block;
+}
+
+.cookies-contact-link:hover {
+  opacity: 0.85;
+}
+
+.cookies-contact-link:focus-visible {
+  outline: none !important;
+  background: rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+  box-shadow: 0 0 0 2px var(--accent);
+  text-decoration: none;
 }

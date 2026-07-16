@@ -1,5 +1,17 @@
 # Changelog
 
+### [v2.1.1]
+
+**a11y & Focus States**
+
+- ✨ Added non-destructive, accessible keyboard focus for `CaseLinkButton` (GitHub, Figma, Dribbble, Demo) and `BackLink` ("Go Home" / "Back") components; replaced resource-heavy React hover hooks and inline mouse event listeners with native CSS transitions and custom `:focus-visible` states, including an intuitive micro-interaction that slides the back arrow left on focus/hover.
+- ✨ Added keyboard focus indicators for the Cookies page; the "Manage Cookies" button (`.cookies-manage-btn`) and contact email link now feature a distinct focus-ring wrapper for seamless keyboard-only navigation.
+- ✨ Added a high-contrast touch feedback and focus rings for the mobile navigation CTA (`.nav-mobile-cta`) in the overlay; implemented a spring active tap state (`scale(0.97)`) and a visible `:focus-visible` focus ring.
+
+**Fixes**
+
+- 🐛 Fixed GitHub Actions CI pipeline crashes; resolved a blocking error where the `actions/setup-node` step would fail to locate the untracked `package-lock.json` file (due to `.gitignore` rules) by correcting the workflow runner configurations to skip automated npm caching or run clean fresh dependency tree installations.
+
 ### [v2.1.0]
 
 **a11y & Focus States**

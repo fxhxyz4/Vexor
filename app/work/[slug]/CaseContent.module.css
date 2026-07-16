@@ -150,8 +150,8 @@
   font-size: 14px;
   padding: 11px 24px;
   border-radius: 9px;
-  border: 1px solid var(--border-c);
-  color: var(--text-secondary);
+  border: 1px solid var(--btn-accent, var(--border-c));
+  color: var(--btn-accent, var(--text-secondary));
   background: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -163,15 +163,23 @@
     color 0.2s ease;
 }
 
-.caseLinkBtn:hover {
-  color: var(--text-primary);
-  border-color: var(--text-muted);
+.caseLinkBtn:hover,
+.caseLinkBtn:focus-visible {
+  outline: none;
+  opacity: calc(var(--btn-accent) / var(--btn-accent) * 0.85);
+  border-color: var(--btn-accent, var(--text-muted));
+  color: var(--btn-accent, var(--text-primary));
 }
 
-.caseLinkBtn:focus-visible {
-  color: var(--text-primary);
-  border-color: var(--accent);
-  transform: translateY(-1px);
+.caseLinkBtn:not([style*='--btn-accent']):hover,
+.caseLinkBtn:not([style*='--btn-accent']):focus-visible {
+  opacity: 1;
+}
+
+.caseLinkBtn:not(.simple):hover,
+.caseLinkBtn:not(.simple):focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px var(--btn-accent, rgba(0, 0, 0, 0.15));
 }
 
 .caseLinkBtn svg {
@@ -182,5 +190,5 @@
 
 .caseLinkBtn:hover svg,
 .caseLinkBtn:focus-visible svg {
-  transform: translateX(3px);
+  transform: scale(1.12);
 }

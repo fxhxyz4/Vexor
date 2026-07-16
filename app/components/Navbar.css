@@ -247,11 +247,39 @@ html[data-theme='dark'] .nav-mobile-link:focus {
   border-radius: 12px;
   background: #0a0a0a;
   color: white;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s ease;
+  position: relative;
 }
 
 html[data-theme='dark'] .nav-mobile-cta {
   background: white;
   color: #0a0a0a;
+}
+
+.nav-mobile-cta:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.nav-mobile-cta:focus-visible {
+  outline: none;
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+  .nav-mobile-cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  html[data-theme='dark'] .nav-mobile-cta:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
 }
 
 .nav-logo-mark {

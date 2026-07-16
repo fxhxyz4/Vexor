@@ -112,9 +112,12 @@ html[data-theme='dark'] .hero-grid-overlay {
   position: relative;
   overflow: hidden;
 }
-.hero-cta:hover,
-.hero-cta:focus {
+.hero-cta:hover {
   transform: translateX(3px);
+}
+.hero-cta:focus-visible {
+  transform: scale(1.03);
+  opacity: 0.9;
 }
 .hero-cta-secondary {
   display: inline-flex;
@@ -131,7 +134,7 @@ html[data-theme='dark'] .hero-grid-overlay {
 }
 .hero-cta-secondary:hover,
 .hero-cta-secondary:focus {
-  padding: 15px 0;
+  border: 1px solid var(--faq-border-color);
 }
 .hero-cta-sheen {
   position: absolute;
